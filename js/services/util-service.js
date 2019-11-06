@@ -16,10 +16,17 @@ function getRandomId() {
 
 function saveToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
+    return Promise.resolve();
 }
 
 function loadFromLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key));
+    return new Promise((resolve, reject) => {
+        let data = JSON.parse(localStorage.getItem(key));
+        if (data) {
+            resolve(data);
+        }
+        else reject(() => `${key} was not found in local storage`);
+    }) 
 }
 
 
