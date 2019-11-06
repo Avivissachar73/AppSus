@@ -5,7 +5,7 @@ export default {
     name: 'email-list',
     props:['mails'],
     template: `
-        <ul class="clean-list">
+        <ul class="clean-list email-list">
             <li v-for="mail in mails" :key="mail.id" >
             <router-link to="/misterEmail/details">
             <email-preview :mail="mail"></email-preview>

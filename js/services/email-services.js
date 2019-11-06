@@ -9,7 +9,9 @@ export const mailsService={
 }
 var gMails;
 
+// function deleteMail(mailId){
 
+// }
 function getMails(){
     return new Promise((resolve, reject) =>  {
         utilServices.loadFromLocalStorage(MAILS_STOREGE_KEY)
@@ -29,7 +31,7 @@ var someMails=[
     {
         title:'mail1',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'muki',
         isFavorie:false,
         isread:false
@@ -37,7 +39,7 @@ var someMails=[
     {
         title:'mail2',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'puki',
         isFavorie:false,
         isread:true
@@ -45,43 +47,43 @@ var someMails=[
     {
         title:'mail3',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'tuki',
         isFavorie:false,
-        isread:false
+        isread:true
     },
     {
         title:'mail4',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'kuki',
         isFavorie:true,
         isread:false
     },{
         title:'mail5',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'shuki',
         isFavorie:true,
         isread:false
     },{
         title:'mail6',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'ruki',
         isFavorie:true,
         isread:false
     },{
         title:'mail7',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos ",
         from:'vuki',
         isFavorie:true,
-        isread:false
+        isread:true
     },{
         title:'mail8',
         id:utilServices.getRandomId(),
-        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos mi est eros convallis auctor arcu dapibus himenaeos",
         from:'ouki',
         isFavorie:true,
         isread:false
