@@ -7,12 +7,13 @@ export default {
     name: 'mister-email',
     template: `
         <section>
-            <email-list :mails="mails"></email-list>
+            <email-list v-if="!isSelected" :mails="mails"></email-list>
         </section>
     `,
     data(){
         return{
-            mails:[]
+            mails:[],
+            isSelected:false
         }
     },
     created(){

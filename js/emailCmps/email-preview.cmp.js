@@ -1,16 +1,16 @@
 'use strict';
-import emailList from '../emailCmps/email-list.cmp.js'
+
 
 export default {
     name: 'email-preview',
     props:['mail'],
     template: `
-        <section class="flex space-around">
+        <section class="flex space-between align-center email-preview">
             <div>
-                from{{mail.from}}
+               {{mail.title}}
             </div>
             <div>
-                title{{mail.title}}
+                {{mail.from}}
             </div>
         </section>
     `,
