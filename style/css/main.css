@@ -1,5 +1,6 @@
 @import './base.css';
 @import './helpers.css';
+@import './miss-notes.css';
 
 body {
     background-color: rgba(190, 186, 186, 0.5);
@@ -11,6 +12,8 @@ header {
 }
 .router-preview {
     height: 90vh;
+    border-right: 1px solid rgb(192, 180, 180);
+    border-left: 1px solid rgb(192, 180, 180);
 }
 
 

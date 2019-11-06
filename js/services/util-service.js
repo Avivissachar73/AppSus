@@ -25,7 +25,7 @@ function loadFromLocalStorage(key) {
         if (data) {
             resolve(data);
         }
-        else reject(() => `${key} was not found in local storage`);
+        else reject(`${key} was not found in local storage`);
     }) 
 }
 

@@ -2,13 +2,14 @@
 
 import notesService from '../services/notes-service.js';
 
+import noteList from '../cmps/notes-cmps/note-list.cmp.js';
+
 export default {
     name: 'miss-keep',
     template: `
         <section>
-            <!-- <h1>MISS KEEP</h1> -->
-            <!-- <div class="place-holder" style="background-color:white;"></div> -->
-            <!-- <note-list></note-list> -->
+            <h2>My notes</h2>
+            <note-list :notes="notes"></note-list>
         </section>
     `,
     data() {
@@ -22,9 +23,8 @@ export default {
                 this.notes = notes;
                 console.log(this.notes)
             });
+    },
+    components: {
+        noteList,
     }
-}
-
-{/* <section class="video-container">
-    <iframe class="video" src="https://www.youtube.com/embed/otrH5hxJ2GE"></iframe>
-</section> */}
+};

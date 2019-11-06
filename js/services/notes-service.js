@@ -30,18 +30,21 @@ function getNotes() {
 
 var someNotes = [
     {
-        type: 'txt',
+        id: utils.getRandomId(),
+        type: 'text',
         title: 'my note',
         txt: 'some note',
-        fontColor: 'balck',
+        fontColor: 'red',
         fontFamily: 'Arial',
     },
     {
-        type: 'picture',
-        title: 'my picture',
+        id: utils.getRandomId(),
+        type: 'image',
+        title: 'my image',
         url: 'http://vignette1.wikia.nocookie.net/marveldatabase/images/a/a9/Spider-Man_Vol_1_1.jpg/revision/latest?cb=20080331205551'
     },
     {
+        id: utils.getRandomId(),
         type: 'video',
         title: 'my video',
         url: 'https://www.youtube.com/embed/otrH5hxJ2GE'
