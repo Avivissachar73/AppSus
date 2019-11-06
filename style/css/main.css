@@ -8,10 +8,16 @@ body {
 
 header {
     height: 10vh;
-    background-color: rgb(68, 240, 125);
+    /* background-color: rgb(68, 240, 125); */
+    background-color: rgba(73, 252, 73, 0.6);
 }
+
+header.container {
+    padding: 10px;
+}
+
 .router-preview {
-    height: 90vh;
+    min-height: 90vh;
     border-right: 1px solid rgb(192, 180, 180);
     border-left: 1px solid rgb(192, 180, 180);
 }

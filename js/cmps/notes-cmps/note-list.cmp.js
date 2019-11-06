@@ -7,12 +7,19 @@ export default {
     props: ['notes'],
     template: `
         <ul class="clean-list flex space-around wrap">
-            <li v-for="note in notes" :key="note.id">
+            <li v-for="note in sortedNotes" :key="note.id">
                 <note-preview :note="note"></note-preview>
             </li>
         </ul>
     `,
     components: {
         notePreview
+    },
+    computed: {
+        sortedNotes() {
+            return this.notes.sort((note1, note2) => {
+                return (note1.isPined)? -1 : 1;
+            })
+        }
     }
 }
