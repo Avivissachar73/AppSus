@@ -1,0 +1,25 @@
+@import './base.css';
+@import './helpers.css';
+
+
+
+
+
+
+.clean-list li {
+    width: fit-content;
+    height: fit-content;
+    display: unset;
+    text-align: unset;
+}
+
+.place-holder {
+    width: 100%;
+    height: 100%;
+}
+
+.absolute-to-right-corner {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
