@@ -1,0 +1,6 @@
+.email-preview{
+    height: 50px;
+    background-color: rgba(230, 221, 210, 0.603);
+    border-bottom: rgba(92, 92, 92, 0.842) 1px solid;
+    padding: 10px;
+}

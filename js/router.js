@@ -5,6 +5,8 @@ import missKeep from './pages/missKeep.cmp.js';
 import misterEmail from './pages/misterEmail.cmp.js';
 import home from './pages/home.cmp.js';
 import about from './pages/about.cmp.js';
+import preview from './emailCmps/email-preview.cmp.js';
+import details from './emailCmps/email-details.cmp.js'
 
 const routes = [
     {
@@ -25,7 +27,18 @@ const routes = [
     },
     {
         path: '/misterEmail',
-        component: misterEmail
+        component: misterEmail,
+        children:[
+            {
+            path:'preview',
+            component:preview
+        },
+        {
+            path:'details',
+            component:details
+        }
+        ]
+
     },
 ];
 

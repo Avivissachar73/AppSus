@@ -27,7 +27,7 @@ function getMails(){
 }
 var someMails=[
     {
-        title:'event1',
+        title:'mail1',
         id:utilServices.getRandomId(),
         subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
         from:'muki',
@@ -35,7 +35,7 @@ var someMails=[
         isread:false
     },
     {
-        title:'event2',
+        title:'mail2',
         id:utilServices.getRandomId(),
         subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
         from:'puki',
@@ -43,7 +43,7 @@ var someMails=[
         isread:true
     },
     {
-        title:'event3',
+        title:'mail3',
         id:utilServices.getRandomId(),
         subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
         from:'tuki',
@@ -51,10 +51,38 @@ var someMails=[
         isread:false
     },
     {
-        title:'event4',
+        title:'mail4',
         id:utilServices.getRandomId(),
         subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
         from:'kuki',
+        isFavorie:true,
+        isread:false
+    },{
+        title:'mail5',
+        id:utilServices.getRandomId(),
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        from:'shuki',
+        isFavorie:true,
+        isread:false
+    },{
+        title:'mail6',
+        id:utilServices.getRandomId(),
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        from:'ruki',
+        isFavorie:true,
+        isread:false
+    },{
+        title:'mail7',
+        id:utilServices.getRandomId(),
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        from:'vuki',
+        isFavorie:true,
+        isread:false
+    },{
+        title:'mail8',
+        id:utilServices.getRandomId(),
+        subtitle:"mi est eros convallis auctor arcu dapibus himenaeos",
+        from:'ouki',
         isFavorie:true,
         isread:false
     },
