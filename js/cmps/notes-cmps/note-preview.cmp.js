@@ -2,6 +2,7 @@
 
 import notesService from '../../services/notes-service.js';
 
+import shortedTxt from './short-txt.cmp.js';
 
 export default {
     name: 'note-preview',
@@ -9,12 +10,13 @@ export default {
     template: `
         <div class="note-preview flex column flex-start" :style="note.style">
             <h5>{{note.title}}</h5>
-            <p v-if="note.type === 'text'">{{note.txt}}</p>
+            <shorted-txt v-if="note.type === 'text'" :txt="note.txt" :txtLimit="200"></shorted-txt>
             <img :src="note.url" v-if="note.type === 'image'"/>
             <iframe :src="note.url" v-if="note.type === 'video'"/>
             <div class="flex space around">
                 <button @click="onPinNote">{{pinMsg}}</button>
-                <router-link :to="'/missKeep/'+note.id">read more</router-link>
+                <!-- <router-link :to="'/missKeep/details'+note.id">More details</router-link> -->
+                <button @click="onOpenEditModal(note.id)">Edit</button>
             </div>
         </div>
     `,
@@ -30,5 +32,8 @@ export default {
         onPinNote() {
             notesService.pinNote(this.note.id)
         },
+    },
+    components: {
+        shortedTxt
     }
 }

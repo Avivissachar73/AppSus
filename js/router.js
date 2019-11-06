@@ -1,12 +1,14 @@
 'use strict';
 
-import missBooks from './pages/missBooks.cmp.js';
-import missKeep from './pages/missKeep.cmp.js';
-import misterEmail from './pages/misterEmail.cmp.js';
 import home from './pages/home.cmp.js';
 import about from './pages/about.cmp.js';
-import preview from './emailCmps/email-preview.cmp.js';
-import details from './emailCmps/email-details.cmp.js'
+import missBooks from './pages/missBooks.cmp.js';
+
+import missKeep from './pages/missKeep.cmp.js';
+
+import misterEmail from './pages/misterEmail.cmp.js';
+import emailPreview from './emailCmps/email-preview.cmp.js';
+import emailDetails from './emailCmps/email-details.cmp.js'
 
 const routes = [
     {
@@ -23,7 +25,7 @@ const routes = [
     },
     {
         path: '/missKeep',
-        component: missKeep
+        component: missKeep,
     },
     {
         path: '/misterEmail',
@@ -31,11 +33,11 @@ const routes = [
         children:[
             {
             path:'preview',
-            component:preview
+            component: emailPreview
         },
         {
             path:'details',
-            component:details
+            component: emailDetails
         }
         ]
 

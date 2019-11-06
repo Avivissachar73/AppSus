@@ -3,6 +3,7 @@
 import notesService from '../services/notes-service.js';
 
 import noteList from '../cmps/notes-cmps/note-list.cmp.js';
+import noteEdit from '../cmps/notes-cmps/edit-note.cmp.js'
 
 export default {
     name: 'miss-keep',
@@ -10,6 +11,7 @@ export default {
         <section>
             <h2>My notes</h2>
             <note-list :notes="notes"></note-list>
+            <note-edit></note-edit>
         </section>
     `,
     data() {
@@ -26,5 +28,6 @@ export default {
     },
     components: {
         noteList,
+        noteEdit
     }
 };

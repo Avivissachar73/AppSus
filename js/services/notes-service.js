@@ -6,19 +6,20 @@ const NOTES_STOREGE_KEY = 'my_notes';
 
 export default {
     getNotes,
-    pinNote
+    pinNote,
+    getNoteById
 };
-
-console.log(utils.getRandomId());
 
 var gNotes;
 
+function getNoteById(id) {
+    return Promise.resolve(gnotes.find(note => note.id === id));
+}
 
 function pinNote(noteId) {
     var note = gNotes.find(note => note.id === noteId);
     note.isPined = !note.isPined;
     utils.saveToLocalStorage(NOTES_STOREGE_KEY, gNotes)
-    console.log('note', note.id, 'is pined', note.isPined);
 }
 
 function getNotes() {
