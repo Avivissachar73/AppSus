@@ -7,7 +7,7 @@ body {
     background-color: rgba(190, 186, 186, 0.5);
 }
 
-header {
+main > header {
     height: 10vh;
     /* background-color: rgb(68, 240, 125); */
     background-color: rgba(73, 252, 73, 0.6);
@@ -17,6 +17,10 @@ header.container {
     padding: 10px;
 }
 
+.main-nav-bar {
+    width: 70%;
+}
+
 .router-preview {
     min-height: 90vh;
     border-right: 1px solid rgb(192, 180, 180);
@@ -24,12 +28,12 @@ header.container {
 }
 
 
-.clean-list li {
+/* .clean-list li {
     width: fit-content;
     height: fit-content;
     display: unset;
     text-align: unset;
-}
+} */
 
 .place-holder {
     width: 100%;

@@ -4,7 +4,7 @@ import notesService from '../../services/notes-service.js'
 
 export default {
     name: 'edit-note',
-    props: ['noteId'],
+    props: ['noteId', 'type'],
     template: `
         <section>
             <h1>DETAILS_COME_HERE</h1>
@@ -32,8 +32,8 @@ export default {
     },
     methods: {
         getNote() {
-            if (!this.note) {
-                this.note = {};
+            if (!this.noteId) {
+                this.note = notesService.getNewNote(this.type);
                 return;
             }
             notesService.getNoteById(this.noteId)
@@ -41,6 +41,6 @@ export default {
         }
     },
     created() {
-        getNote();
+        // this.getNote();
     }
 }

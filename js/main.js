@@ -7,11 +7,11 @@ var options = {
     router,
     el: '#appSus',
     template: `
-        <section>
+        <main>
             <header class="flex align-center">
                 <section class="container flex align-center space-between">
                     <h1>App Sus</h1>
-                    <ul class="main-nab-bar clean-list flex wrap space-around">
+                    <ul class="main-nav-bar clean-list flex wrap space-around">
                         <li><router-link to="/">Home</router-link></li> |
                         <li><router-link to="/about">About</router-link></li> |
                         <li><router-link to="/missBooks">MissBooks</router-link></li> |
@@ -21,7 +21,7 @@ var options = {
                 </section>
             </header>
             <router-view class="container router-preview"></router-view>
-        </section>
+        </main>
     `,
     components: {
     }
