@@ -1,9 +1,17 @@
 @import './base.css';
 @import './helpers.css';
 
+body {
+    background-color: rgba(190, 186, 186, 0.5);
+}
 
-
-
+header {
+    height: 10vh;
+    background-color: rgb(68, 240, 125);
+}
+.router-preview {
+    height: 90vh;
+}
 
 
 .clean-list li {
