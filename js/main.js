@@ -8,7 +8,7 @@ var options = {
     el: '#appSus',
     template: `
         <section>
-            <header class="flex column align-center justify-center">
+            <header class="container flex align-center space-between">
                 <h1>App Sus</h1>
                 <ul class="main-nab-bar clean-list flex">
                     <li><router-link to="/">Home</router-link></li> |
@@ -18,7 +18,7 @@ var options = {
                     <li><router-link to="/missKeep">MissKeep</router-link></li>
                 </ul>
             </header>
-            <router-view></router-view>
+            <router-view class="container"></router-view>
         </section>
     `,
     components: {
