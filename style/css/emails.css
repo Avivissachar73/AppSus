@@ -1,6 +1,29 @@
 .email-preview{
-    height: 50px;
+    /* height: 50px; */
     background-color: rgba(230, 221, 210, 0.603);
     border-bottom: rgba(92, 92, 92, 0.842) 1px solid;
-    padding: 10px;
+    padding: 15px;
+}
+.email-side-bar{
+    width: 200px;
+    padding: 20px;
+    background: rgb(238, 207, 161);
+}
+.email-side-bar li {
+    padding: 30px;
+}
+.email-side-bar :hover{
+    background-color: blanchedalmond;
+}
+.email-list{
+    width: 100%;
+}
+.sub-title-perview{
+    background-color:rgba(247, 229, 202, 0.247) ;
+    padding: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 14px;
+}
+.unReadMail{
+    font-weight: 600;
 }
