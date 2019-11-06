@@ -7,7 +7,10 @@ export default {
     template: `
         <ul class="clean-list">
             <li v-for="mail in mails" :key="mail.id" >
-                <email-preview :mail="mail"></email-preview>
+            <router-link to="/misterEmail/details">
+            <email-preview :mail="mail"></email-preview>
+            </router-link>
+                
             </li>
         </ul>
     `,

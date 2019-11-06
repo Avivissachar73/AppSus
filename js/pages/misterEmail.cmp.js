@@ -7,7 +7,7 @@ export default {
     name: 'mister-email',
     template: `
         <section>
-            <email-list v-if="!isSelected" :mails="mails"></email-list>
+            <email-list :mails="mails"></email-list>
         </section>
     `,
     data(){
