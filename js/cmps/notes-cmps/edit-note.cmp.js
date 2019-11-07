@@ -11,7 +11,7 @@ export default {
         <section>
             <!-- <h2>EDIT_NOTE</h2> -->
 
-            <form v-if="!noteId" class="add-note-radios flex align-center justify-center">
+            <form class="add-note-radios flex align-center justify-center">
                 <h4>Add a note: </h4>
                 <div class="flex">
                     <label for="textRadio">&tcaron;</label>
