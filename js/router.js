@@ -3,12 +3,11 @@
 import home from './pages/home.cmp.js';
 import about from './pages/about.cmp.js';
 import missBooks from './pages/missBooks.cmp.js';
-
 import missKeep from './pages/missKeep.cmp.js';
-
 import misterEmail from './pages/misterEmail.cmp.js';
-import emailPreview from './emailCmps/email-preview.cmp.js';
-import emailDetails from './emailCmps/email-details.cmp.js'
+import compose from './emailCmps/compose.cmp.js';
+import list from './emailCmps/email-list.cmp.js'
+
 
 const routes = [
     {
@@ -32,13 +31,14 @@ const routes = [
         component: misterEmail,
         children:[
             {
-            path:'preview',
-            component: emailPreview
-        },
-        {
-            path:'details',
-            component: emailDetails
-        }
+                path:'list',
+                component:list
+            },
+          {
+              path:'compose',
+              component: compose
+
+          }
         ]
 
     },

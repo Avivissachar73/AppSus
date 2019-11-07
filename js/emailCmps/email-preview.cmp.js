@@ -46,6 +46,7 @@ export default {
             eventBus.$emit('delete',this.mail.id)
         },
         starringMail(){
+            this.mail.isStarred=!this.isStarred
             this.isStarred=!this.isStarred
         }
         
