@@ -10,26 +10,31 @@ export default {
     template: `
         <section @click="selectedPreview" class="email-preview">
            <div :class="{ unReadMail: !mail.isread}" class="flex space-between align-center ">
+         
                 <div>
                {{mail.title}}
                </div>
                <div>
                 {{mail.from}}
+                <button @click.stop="starringMail" v-if="!isStarred">✰</button>
+                <button @click.stop="starringMail" v-else>⭐</button>
+                
+                
                </div>
            </div>
-            <div class="sub-title-perview" v-if="selected">
-            <button>⭐</button>
-            <button @click="deleteMail">🗑️</button>
-            <button>📖</button>
+                <div class="sub-title-perview" v-if="selected">
+                <button @click="deleteMail">🗑️</button>
+                <button>📖</button>
+                    
+                    <p> {{mail.subtitle}}</p>
                 
-                <p> {{mail.subtitle}}</p>
-               
-</div>
+            </div>
         </section>
     `,
     data(){
         return{
             selected:false,
+            isStarred:this.mail.isStarred
         }
     },
     methods:{
@@ -39,7 +44,11 @@ export default {
         deleteMail(){
             console.log(this.mail.id)
             eventBus.$emit('delete',this.mail.id)
+        },
+        starringMail(){
+            this.isStarred=!this.isStarred
         }
+        
         
 
 

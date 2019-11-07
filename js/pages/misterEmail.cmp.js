@@ -27,14 +27,15 @@ export default {
         setFilter(filterBy){
             this.filterBy=filterBy
         },
-        deleteMail(mailId){
-            console.log(mailId)
-            mailsService.deleteMail(mailId)
-        }
+        // deleteMail(mailId){
+        //     console.log(mailId,'ijijij')
+        //     mailsService.deleteMail(mailId)
+        // }
     },
     created(){
         eventBus.$on('delete', (mailId)=>{
-            console.log(mailId)
+            console.log(mailId,)
+           mailsService.deleteMail(mailId)
         })
         mailsService.getMails()
             .then(mails=>this.mails=mails)
