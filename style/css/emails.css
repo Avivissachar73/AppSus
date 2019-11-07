@@ -35,3 +35,8 @@
 .unReadMail{
     font-weight: 600;
 }
+.compose{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

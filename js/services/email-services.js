@@ -5,15 +5,41 @@ import utilServices from './util-service.js'
 const MAILS_STOREGE_KEY = 'my_mails'
 export const mailsService={
     getMails,
-    deleteMail
+    deleteMail,
+    getUnreadCount,
+    addMail
     
 }
 var gMails;
 
+function addMail(newMail){
+     console.log(newMail)
+     gMails.unshift(
+        {
+            title:newMail.title,
+            id:utilServices.getRandomId(),
+            subtitle:newMail.subtitle,
+            from:'adi',
+            isFavorie:false,
+            isread:false,
+            isStarred:false
+        }
+
+     )
+}
+
+function getUnreadCount(){
+    var unReadCount=0
+    for(var i = 0 ;i < gMails.length ;i++){
+        if(!gMails[i].isread){unReadCount++}
+    }
+    return unReadCount
+}
+
 function deleteMail(mailId){
-    for(var i = 0;i<someMails.length;i++){
-        if(someMails[i].id===mailId){
-            someMails.splice(i,1)
+    for(var i = 0;i<gMails.length;i++){
+        if(gMails[i].id===mailId){
+            gMails.splice(i,1)
         }
     }
     // console.log(mailId,)
