@@ -25,6 +25,12 @@
 .flex-start {
     align-items: flex-start;
 }
+.flex-end {
+    align-items: flex-end;
+}
+.justify-end {
+    justify-content: flex-end;
+}
 
 .clean-list {
     list-style-type: none;

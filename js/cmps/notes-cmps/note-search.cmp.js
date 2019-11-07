@@ -3,7 +3,7 @@
 export default {
     name: 'note-search',
     template: `
-        <section>
+        <section class="note-search flex justify-end wrap">
             <input type="text" placeholder="Search" v-model="filterBy.searchStr" @input="onSearch"/>
             <select v-model="filterBy.type" @change="onSearch">
                 <option value="All" label="All"/>

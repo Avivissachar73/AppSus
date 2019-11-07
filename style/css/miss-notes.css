@@ -3,6 +3,14 @@
     padding: 10px;
 }
 
+.notes-keep-app header > * {
+    width: 50%
+}
+
+/* .notes-keep-app header .note-search {
+
+} */
+
 .note-preview {
     background-color: rgba(73, 252, 73, 0.6);
     box-shadow: 0px 0px 20px -7px rgba(0,0,0,0.75);
@@ -14,10 +22,8 @@
 }
 
 .note-preview img, .note-preview iframe, .note-preview audio {
-    /* height: 85%; */
-    /* height: 90px; */
-    width: 85%;
-    /* object-fit: cover; */
+    /* width: 85%; */
+    width: 200px;
 }
 
 .note-preview > * {
@@ -44,18 +50,11 @@
 }
 
 .notes-keep-app button, .notes-keep-app label {
-    /* font-size: 1.3rem;
-    border: 1px solid black;
-    border-radius: 7.5px; */
     margin: 3px;
 }
 .notes-keep-app label:hover {
     cursor: pointer;
 }
-
-/* .add-note-radios {
-    margin-left: 10px;
-} */
 
 .add-note-radios input[type="radio"] {
     visibility: hidden;
@@ -65,4 +64,41 @@
     /* width: 30px; */
     font-size: 1.3rem;
     text-align: center;
+}
+
+.note-edit-modal {
+    background-color: rgb(70, 228, 104);
+    border: 1px solid black;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+    height: 200px;
+    width: 300px;
+    z-index: 1000;
+}
+
+.close-modal-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.note-edit-form {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+}
+
+.note-edit-form > *:not(button) {
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.note-edit-form input[type="text"], .note-edit-form textarea {
+    background: unset;
+    border: unset;
+    border-bottom: 1px solid rgba(78, 75, 75, 0.5);
 }

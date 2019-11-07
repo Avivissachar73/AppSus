@@ -14,37 +14,39 @@ export default {
             <form v-if="!noteId" class="add-note-radios flex align-center justify-center">
                 <h4>Add a note: </h4>
                 <div class="flex">
+                    <label for="textRadio">&tcaron;</label>
                     <input id="textRadio" type="radio" value="textNote" v-model="type"/>
                     <!-- <label for="textRadio">Text</label> -->
-                    <label for="textRadio">&tcaron;</label>
                 </div>
                 <div class="flex">
+                    <label for="imageRadio">&#10064;</label>
                     <input id="imageRadio" type="radio" value="imageNote" v-model="type"/>
                     <!-- <label for="imageRadio">Image</label> -->
-                    <label for="imageRadio">&#10064;</label>
                 </div>
                 <div class="flex">
+                    <label for="videoRadio">▷</label>
                     <input id="videoRadio" type="radio" value="videoNote" v-model="type"/>
                     <!-- <label for="videoRadio">Video</label> -->
-                    <label for="videoRadio">▷</label>
                 </div>
                 <div class="flex">
+                    <label for="audioRadio">&#9833;</label>
                     <input id="audioRadio" type="radio" value="audioNote" v-model="type"/>
                     <!-- <label for="audioRadio">Audio</label> -->
-                    <label for="audioRadio">&#9833;</label>
                 </div>
                 <div class="flex">
+                    <label for="todoRadio">&#9776;</label>
                     <input id="todoRadio" type="radio" value="todoNote" v-model="type"/>
                     <!-- <label for="todoRadio">Todo</label> -->
                     <!-- <label for="todoRadio">&#8285;&#9783;</label> -->
-                    <label for="todoRadio">&#9776;</label>
                 </div>
             </form>
 
-            <section  v-if="noteId || type">
-                <button @click="onCloseEdit">close</button>
+            <section  v-if="noteId || type" class="note-edit-modal">
+                <!-- <button @click="onCloseEdit">close</button> -->
+                <button class="close-modal-button" @click="onCloseEdit">&#10005;</button>
 
-                <form @submit.prevent="onSaveNote" class="flex column flex-start">
+                <form @submit.prevent="onSaveNote" class="note-edit-form flex column flex-start">
+                    <h3>{{title}}</h3>
                     <input type="text" placeholder="Title" v-model="note.title"/>
                     <textarea v-if="txtCondition" type="text" placeholder="Text" v-model="note.txt"/>
                     <input v-if="urlCondition" type="text" placeholder="url" v-model="note.url"/>
@@ -62,12 +64,12 @@ export default {
                         </ul>
                     </div>
                     
-                    <div class="new-note-styling">
-                        <div>
+                    <div class="new-note-styling flex space-between align-center">
+                        <div class="flex column">
                             <label for="newNoteBgc">bgColor</label>
                             <input id="newNoteBgc" type="color" v-model="note.style['background-color']">
                         </div>
-                        <div>
+                        <div class="flex column">
                             <label for="newNoteColor">Color</label>
                             <input id="newNoteColor" type="color" v-model="note.style['color']">
                         </div>
@@ -92,6 +94,21 @@ export default {
         },
         txtCondition() {
             return this.note.type === 'textNote';
+        },
+        title() {
+            if (!this.type) return;
+            if (this.type === 'textNote') return 'Add Text';
+            if (this.type === 'audioNote') return 'Add Audio';
+            if (this.type === 'videoNote') return 'Add Video';
+            if (this.type === 'todoNote') return 'Add List';
+            if (this.type === 'imageNote') return 'Add Image';
+            
+            if (!this.note.type) return;
+            if (this.note.type === 'textNote') return 'Edit Text';
+            if (this.note.type === 'audioNote') return 'Edit Audio';
+            if (this.note.type === 'videoNote') return 'Edit Video';
+            if (this.note.type === 'todoNote') return 'Edit List';
+            if (this.note.type === 'imageNote') return 'Edit Image';
         }
     },
     methods: {

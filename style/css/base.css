@@ -16,10 +16,21 @@ button {
     font-size: 1.3rem;
     border: 1px solid black;
     border-radius: 7.5px;
+    outline: unset;
 }
 button:hover {
     cursor: pointer;
 }
+
+input, textarea {
+    outline: unset;
+}
+input::placeholder, textarea::placeholder {
+    font-family: Arial;
+    /* color: rgba(236, 226, 226, 1); */
+    color: #fff;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     margin-block-start: 0;

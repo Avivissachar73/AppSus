@@ -21,7 +21,7 @@ main > footer {
     height: 33.3333vh;
 }
 
-header.container {
+header .container {
     padding: 10px;
 }
 
@@ -55,11 +55,12 @@ header.container {
 }
 @media (max-width: 600px) {
     .container {
-        width: 95%;
-    }
-}
-@media (max-width: 500px) {
-    .container {
+        /* width: 95%; */
         width: 100%;
     }
 }
+/* @media (max-width: 500px) {
+    .container {
+        width: 100%;
+    }
+} */
