@@ -23,8 +23,8 @@
 }
 
 .note-preview img, .note-preview iframe, .note-preview audio {
-    /* width: 85%; */
-    width: 200px;
+    width: 85%;
+    /* width: 200px; */
 }
 
 .note-preview > * {
@@ -76,7 +76,7 @@
     bottom: 50%;
     right: 50%;
     transform: translate(50%, 50%);
-    height: 200px;
+    min-height: 200px;
     width: 300px;
     z-index: 1000;
 }
