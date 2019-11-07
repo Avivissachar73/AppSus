@@ -25,10 +25,6 @@ var audioNote = {
         <audio controls>
             <source :src="note.url" type="audio/mpeg"/>
         </audio>
-        <!-- <audio controls/>
-            <source :src="note.url" type="audio/ogg">
-            <source :src="note.url" type="audio/mpeg">
-        </audio> -->
     `,
 }
 
@@ -53,12 +49,12 @@ var todoNote = {
     props: ['note'],
     template: `
         <div>
-            <form @submit.prevent="onAddTodo" class="flex">
+            <form @submit.prevent="onAddTodo" class="flex space-between width-all">
                 <input type="text" placeholder="Add todo" v-model="newTodoTxt"/>
                 <button>+</button>
             </form>
-            <ul class="clean-list">
-                <li v-for="todo in note.todos" :key="todo.id" class="flex align-center" @click="onMarkTodo(todo.id)">
+            <ul class="clean-list width-all">
+                <li v-for="todo in note.todos" :key="todo.id" class="flex align-center width-all" @click="onMarkTodo(todo.id)">
                     <button @click.stop="onRemoveTodo(todo.id)">X</button>
                     <div :class="{'done-todo': todo.isDone}">{{todo.txt}}</div>
                 </li>
@@ -101,7 +97,7 @@ export default {
         <div class="note-preview flex column align-center justify-center" :style="note.style">
             <h5>{{note.title}}</h5>
 
-            <component :is="note.type" :name="note.type" :note="note"/>
+            <component :is="note.type" :name="note.type" class="note-data" :note="note"/>
             
             <div class="flex space-around">
                 <button @click="onPinNote">{{pinMsg}}</button>

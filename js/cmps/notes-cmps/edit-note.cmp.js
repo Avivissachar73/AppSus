@@ -11,37 +11,38 @@ export default {
         <section>
             <!-- <h2>EDIT_NOTE</h2> -->
 
-            <form class="add-note-radios flex align-center justify-center">
-                <h4>Add a note: </h4>
-                <div class="flex">
-                    <label for="textRadio">&tcaron;</label>
-                    <input id="textRadio" type="radio" value="textNote" v-model="type"/>
-                    <!-- <label for="textRadio">Text</label> -->
-                </div>
-                <div class="flex">
-                    <label for="imageRadio">&#10064;</label>
-                    <input id="imageRadio" type="radio" value="imageNote" v-model="type"/>
-                    <!-- <label for="imageRadio">Image</label> -->
-                </div>
-                <div class="flex">
-                    <label for="videoRadio">▷</label>
-                    <input id="videoRadio" type="radio" value="videoNote" v-model="type"/>
-                    <!-- <label for="videoRadio">Video</label> -->
-                </div>
-                <div class="flex">
-                    <label for="audioRadio">&#9833;</label>
-                    <input id="audioRadio" type="radio" value="audioNote" v-model="type"/>
-                    <!-- <label for="audioRadio">Audio</label> -->
-                </div>
-                <div class="flex">
-                    <label for="todoRadio">&#9776;</label>
-                    <input id="todoRadio" type="radio" value="todoNote" v-model="type"/>
-                    <!-- <label for="todoRadio">Todo</label> -->
-                    <!-- <label for="todoRadio">&#8285;&#9783;</label> -->
+            <form class="add-note-container flex align-center space-between">
+                <h4>Add:</h4>
+                <div class="add-note-radios flex align-center space-around">
+                    <div class="flex">
+                        <!-- <label for="textRadio"><button>&tcaron;</button></label> -->
+                        <button><label for="textRadio">&tcaron;</label></button>
+                        <input id="textRadio" type="radio" value="textNote" v-model="type"/>
+                    </div>
+                    <div class="flex">
+                        <!-- <label for="imageRadio"><button>&#10064;</button></label> -->
+                        <button><label for="imageRadio">&#10064;</label></button>
+                        <input id="imageRadio" type="radio" value="imageNote" v-model="type"/>
+                    </div>
+                    <div class="flex">
+                        <!-- <label for="videoRadio"><button>▷</button></label> -->
+                        <button><label for="videoRadio">▷</label></button>
+                        <input id="videoRadio" type="radio" value="videoNote" v-model="type"/>
+                    </div>
+                    <div class="flex">
+                        <!-- <label for="audioRadio"><button>&#9833;</button></label> -->
+                        <button><label for="audioRadio">&#9833;</label></button>
+                        <input id="audioRadio" type="radio" value="audioNote" v-model="type"/>
+                    </div>
+                    <div class="flex">
+                        <!-- <label for="todoRadio"><button>&#9776;</button></label> -->
+                        <button><label for="todoRadio">&#9776;</label></button>
+                        <input id="todoRadio" type="radio" value="todoNote" v-model="type"/>
+                    </div>
                 </div>
             </form>
 
-            <section  v-if="noteId || type" class="note-edit-modal">
+            <section  v-if="noteId || type" class="note-edit-modal flex align-center justify-center">
                 <!-- <button @click="onCloseEdit">close</button> -->
                 <button class="close-modal-button" @click="onCloseEdit">&#10005;</button>
 
