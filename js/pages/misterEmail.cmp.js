@@ -13,7 +13,7 @@ export default {
             <div class="flex">
             <side-bar :unReadCount="unreadCount"></side-bar>
             <router-view :mails="mailsToShow"></router-view>
-            {{unreadCount}}
+            
         </div>
         </section>
     `,
@@ -24,6 +24,7 @@ export default {
             isSelected:false,
             showStars:false,
             showUnread:false,
+            showTrash:false
           
 
         }
@@ -41,7 +42,11 @@ export default {
     },
     created(){
         eventBus.$on('sendingNewMail',(newMail)=>{
+            if(newMail.to===''||newMail.subtitle===''){return}
             mailsService.addMail(newMail)
+        })
+        eventBus.$on('showTrash',()=>{
+            this.showTrash=!this.showTrash
         })
         
         eventBus.$on('showUnread',()=>{
@@ -73,7 +78,7 @@ export default {
             return this.mails.filter(mail=>
                 (regex.test(mail.title)|| regex.test(mail.from)
                 ||regex.test(mail.subtitle))&&(!this.showStars || mail.isStarred)&&
-                (!this.showUnread || !mail.isread))
+                (!this.showUnread || !mail.isread)&&(this.showTrash||!mail.isTrash))
         }
 
 

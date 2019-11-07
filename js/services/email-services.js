@@ -7,7 +7,8 @@ export const mailsService={
     getMails,
     deleteMail,
     getUnreadCount,
-    addMail
+    addMail,
+    getMailById
     
 }
 var gMails;
@@ -22,10 +23,19 @@ function addMail(newMail){
             from:'adi',
             isFavorie:false,
             isread:false,
-            isStarred:false
+            isStarred:false,
+            isTrash:false
         }
 
      )
+}
+function getMailById(id){
+    for(var i = 0 ;i < gMails.length ;i++){
+        if(gMails[i].id===id){
+            console.log(gMails[i])
+            return gMails[i]
+        }
+    }
 }
 
 function getUnreadCount(){
@@ -39,7 +49,7 @@ function getUnreadCount(){
 function deleteMail(mailId){
     for(var i = 0;i<gMails.length;i++){
         if(gMails[i].id===mailId){
-            gMails.splice(i,1)
+            gMails[i].isTrash=true
         }
     }
     // console.log(mailId,)
@@ -72,7 +82,8 @@ var someMails=[
         from:'muki',
         isFavorie:false,
         isread:false,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
     },
     {
         title:'mail2',
@@ -81,7 +92,8 @@ var someMails=[
         from:'puki',
         isFavorie:false,
         isread:true,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
 
     },
     {
@@ -91,7 +103,8 @@ var someMails=[
         from:'tuki',
         isFavorie:false,
         isread:true,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
 
     },
     {
@@ -101,7 +114,8 @@ var someMails=[
         from:'kuki',
         isFavorie:true,
         isread:false,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
 
     },{
         title:'mail5',
@@ -110,7 +124,8 @@ var someMails=[
         from:'shuki',
         isFavorie:true,
         isread:false,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
 
     },{
         title:'mail6',
@@ -119,7 +134,8 @@ var someMails=[
         from:'ruki',
         isFavorie:true,
         isread:false,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
 
     },{
         title:'mail7',
@@ -128,7 +144,8 @@ var someMails=[
         from:'vuki',
         isFavorie:true,
         isread:true,
-        isStarred:true
+        isStarred:true,
+        isTrash:false
 
     },{
         title:'mail8',
@@ -137,7 +154,8 @@ var someMails=[
         from:'ouki',
         isFavorie:true,
         isread:false,
-        isStarred:false
+        isStarred:false,
+        isTrash:false
 
     },
     

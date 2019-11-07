@@ -24,7 +24,8 @@ export default {
            </div>
                 <div class="sub-title-perview" v-if="selected">
                 <button @click="deleteMail">🗑️</button>
-                <button>📖</button>
+                <router-link :to="'/misterEmail/details'+mail.id"> 📖</router-link>
+               
                     
                     <p> {{mail.subtitle}}</p>
                 
@@ -42,6 +43,7 @@ export default {
             this.selected=!this.selected
         },
         deleteMail(){
+            this.mail.trash=!this.mail.trash
             console.log(this.mail.id)
             eventBus.$emit('delete',this.mail.id)
         },
