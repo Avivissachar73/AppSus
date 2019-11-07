@@ -7,6 +7,7 @@ import missKeep from './pages/missKeep.cmp.js';
 import misterEmail from './pages/misterEmail.cmp.js';
 import compose from './emailCmps/compose.cmp.js';
 import list from './emailCmps/email-list.cmp.js'
+import details from './emailCmps/email-details.cmp.js'
 
 
 const routes = [
@@ -38,7 +39,12 @@ const routes = [
               path:'compose',
               component: compose
 
-          }
+          },
+          {
+            path:'details:id',
+            component: details
+
+            }
         ]
 
     },

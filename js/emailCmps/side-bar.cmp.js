@@ -13,7 +13,7 @@ export default {
           
             <li @click="showStars" >starred</li>
             <li>sent-mail</li>
-            <li>drafts</li>
+            <li @click="showTrash">trash</li>
             <li @click="showUnRead">unread({{unReadCount}})</li>
             
         </ul>
@@ -30,6 +30,9 @@ export default {
         },
         showUnRead(){
             eventBus.$emit('showUnread')
+        },
+        showTrash(){
+            eventBus.$emit('showTrash')
         }
     },
    
