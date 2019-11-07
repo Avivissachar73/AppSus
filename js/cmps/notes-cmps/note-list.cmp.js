@@ -20,6 +20,6 @@ export default {
             return this.notes.sort((note1, note2) => {
                 return (note1.isPined)? -1 : 1;
             })
-        }
+        },
     }
 }
