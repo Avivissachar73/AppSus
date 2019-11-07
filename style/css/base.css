@@ -28,7 +28,7 @@ input, textarea {
 input::placeholder, textarea::placeholder {
     font-family: Arial;
     /* color: rgba(236, 226, 226, 1); */
-    color: #fff;
+    color: rgb(82, 77, 77);
 }
 
 

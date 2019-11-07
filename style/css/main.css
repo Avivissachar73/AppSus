@@ -29,6 +29,9 @@ header .container {
     width: 70%;
 }
 
+.main-nav-button {
+    display: none;
+}
 
 .router-preview {
     min-height: 90vh;
@@ -44,21 +47,51 @@ header .container {
 
 .container {
     margin: 0 auto;
-    width: 80%;
+    /* width: 80%; */
+    width: 90%;
     height: 100%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .container {
-        width: 90%;
-    }
-}
-@media (max-width: 600px) {
-    .container {
-        /* width: 95%; */
+        /* width: 90%; */
         width: 100%;
     }
 }
+@media (max-width: 650px) {
+    .main-nav-button {
+        display: block;
+    }
+    .main-nav-bar {
+        position: fixed;
+        flex-direction: column;
+        top: 10vh;
+        right: 0;
+        width: fit-content;
+        z-index: 100000000000000000000000000000;
+        transform: translate(101%, 0);
+        transition: 0.3s;
+    } .main-nav-bar li {
+        height: 15vh;
+        width: 40vw;
+        background-color: rgb(50, 205, 76);
+        border: 1px solid black;
+        box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } .main-nav-bar.open {
+        transform: translate(0, 0);
+    }
+
+}
+
+/* @media (max-width: 600px) {
+    .container {
+        width: 95%;
+        width: 100%;
+    }
+} */
 /* @media (max-width: 500px) {
     .container {
         width: 100%;

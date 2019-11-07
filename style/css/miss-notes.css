@@ -64,6 +64,7 @@
     /* width: 30px; */
     font-size: 1.3rem;
     text-align: center;
+    margin-left: 10px; 
 }
 
 .note-edit-modal {
@@ -101,4 +102,43 @@
     background: unset;
     border: unset;
     border-bottom: 1px solid rgba(78, 75, 75, 0.5);
+}
+
+.note-list {
+    margin: 0 auto;
+    column-count: 4;
+}
+
+.note-list > * {
+    /* width: fit-content; */
+    text-align: center;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.note-list li {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+@media (max-width: 1100px) {
+    .note-list {
+        column-count: 3;
+    }
+}
+@media (max-width: 820px) {
+    .note-list {
+        padding: 0;
+    }
+}
+@media (max-width: 800px) {
+    .note-list {
+        column-count: 2;
+    }
+}
+@media (max-width: 530px) {
+    .note-list {
+        column-count: 1;
+    }
 }
