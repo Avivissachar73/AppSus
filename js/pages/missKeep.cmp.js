@@ -14,6 +14,7 @@ export default {
                 <h2>My notes</h2>
                 <notes-search @search="onSearch"></notes-search>
             </header>
+            <button @click="clearStorage">clear local storage</button>
             <note-edit></note-edit>
             <note-list :notes="notesToShow"></note-list>
         </section>
@@ -38,6 +39,9 @@ export default {
     methods: {
         onSearch(filterBy) {
             this.filterBy = filterBy;
+        },
+        clearStorage() {
+            localStorage.clear();
         }
     },
     created() {
