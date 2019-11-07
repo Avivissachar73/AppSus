@@ -3,17 +3,25 @@
 @import './miss-notes.css';
 @import './emails.css';
 
-body {
-    background-color: rgba(190, 186, 186, 0.5);
-}
+/* body {
+    background-color: rgba(238, 229, 229, 0.836);
+} */
 
 main > header {
-    height: 10vh;
-    /* background-color: rgb(68, 240, 125); */
+    border-bottom: 1px solid rgba(61, 57, 57, 0.3);
     background-color: rgba(73, 252, 73, 0.6);
+    box-shadow: inset 0px 0px 10px -7px rgba(0,0,0,0.75);
+    height: 10vh;
 }
 
-header.container {
+main > footer {
+    background-color: rgba(190, 186, 186, 0.5);
+    border-top: 1px solid rgba(61, 57, 57, 0.3);
+    box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.75);
+    height: 33.3333vh;
+}
+
+header .container {
     padding: 10px;
 }
 
@@ -21,23 +29,14 @@ header.container {
     width: 70%;
 }
 
-.router-preview {
-    min-height: 90vh;
-    border-right: 1px solid rgb(192, 180, 180);
-    border-left: 1px solid rgb(192, 180, 180);
+.main-nav-button {
+    display: none;
 }
 
-
-/* .clean-list li {
-    width: fit-content;
-    height: fit-content;
-    display: unset;
-    text-align: unset;
-} */
-
-.place-holder {
-    width: 100%;
-    height: 100%;
+.router-preview {
+    min-height: 90vh;
+    border-right: 1px solid rgba(192, 180, 180, 0.3);
+    border-left: 1px solid rgba(192, 180, 180, 0.3);
 }
 
 .absolute-to-right-corner {
@@ -45,3 +44,56 @@ header.container {
     top: 10px;
     right: 10px;
 }
+
+.container {
+    margin: 0 auto;
+    /* width: 80%; */
+    width: 90%;
+    height: 100%;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        /* width: 90%; */
+        width: 100%;
+    }
+}
+@media (max-width: 650px) {
+    .main-nav-button {
+        display: block;
+    }
+    .main-nav-bar {
+        position: fixed;
+        flex-direction: column;
+        top: 10vh;
+        right: 0;
+        width: fit-content;
+        z-index: 100000000000000000000000000000;
+        transform: translate(101%, 0);
+        transition: 0.3s;
+    } .main-nav-bar li {
+        height: 15vh;
+        width: 40vw;
+        background-color: rgb(50, 205, 76);
+        border: 1px solid black;
+        box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.75);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } .main-nav-bar.open {
+        transform: translate(0, 0);
+    }
+
+}
+
+/* @media (max-width: 600px) {
+    .container {
+        width: 95%;
+        width: 100%;
+    }
+} */
+/* @media (max-width: 500px) {
+    .container {
+        width: 100%;
+    }
+} */

@@ -6,7 +6,8 @@ export default {
     name: 'note-list',
     props: ['notes'],
     template: `
-        <ul class="clean-list flex space-around wrap">
+        <!-- <ul class="clean-list flex space-around wrap"> -->
+        <ul class="clean-list note-list">
             <li v-for="note in sortedNotes" :key="note.id">
                 <note-preview :note="note"></note-preview>
             </li>

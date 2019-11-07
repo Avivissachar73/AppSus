@@ -2,6 +2,8 @@
 
 import notesService from '../../services/notes-service.js';
 
+import {eventBus} from '../../services/event-bus-service.js';
+
 import shortedTxt from './short-txt.cmp.js';
 
 var textNote = {
@@ -56,7 +58,7 @@ var todoNote = {
                 <button>+</button>
             </form>
             <ul class="clean-list">
-                <li v-for="todo in note.todos" :key="todo.id" class="flex" @click="onMarkTodo(todo.id)">
+                <li v-for="todo in note.todos" :key="todo.id" class="flex align-center" @click="onMarkTodo(todo.id)">
                     <button @click.stop="onRemoveTodo(todo.id)">X</button>
                     <div :class="{'done-todo': todo.isDone}">{{todo.txt}}</div>
                 </li>
@@ -84,12 +86,11 @@ var todoNote = {
         },
     },
     watch: {
-        newTodoTxt(currVall) {
-            if (currVall.length > 20) {
-                this.newTodoTxt = this.newTodoTxt.slice(0, 20);
-            }
-
-        }
+        // newTodoTxt(currVall) {
+        //     if (currVall.length > 20) {
+        //         this.newTodoTxt = this.newTodoTxt.slice(0, 20);
+        //     }
+        // }
     }
 }
 
@@ -104,8 +105,10 @@ export default {
             
             <div class="flex space-around">
                 <button @click="onPinNote">{{pinMsg}}</button>
-                <button @click="onOpenEditModal(note.id)">Edit</button>
-                <button @click="onRemoveNote(note.id)">Remove</button>
+                <!-- <button @click="onOpenEdit">Edit</button> -->
+                <button @click="onOpenEdit">&#10002;</button>
+                <!-- <button @click="onRemoveNote">Remove</button> -->
+                <button @click="onRemoveNote">&#10005;</button>
             </div>
         </div>
     `,
@@ -114,7 +117,8 @@ export default {
             return {'font-family': this.note.fontFamily, 'color': this.note.fontColor};
         },
         pinMsg() {
-            return (this.note.isPined)? 'un pin' : 'Pin it';
+            // return (this.note.isPined)? 'un pin' : 'Pin it';
+            return (this.note.isPined)? '➶' : '➴';
         }
     },
     methods: {
@@ -124,6 +128,9 @@ export default {
         onRemoveNote() {
             notesService.removeNote(this.note.id)
                 .then(() => console.log('note has been removed successfully'))
+        },
+        onOpenEdit() {
+            eventBus.$emit('editNote', this.note.id);
         }
     },
     components: {

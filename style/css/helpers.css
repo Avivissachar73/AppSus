@@ -25,15 +25,15 @@
 .flex-start {
     align-items: flex-start;
 }
+.flex-end {
+    align-items: flex-end;
+}
+.justify-end {
+    justify-content: flex-end;
+}
 
 .clean-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    margin: 0 auto;
-    width: 80%;
-    height: 100%;
 }

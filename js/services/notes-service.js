@@ -13,12 +13,23 @@ export default {
     markTodo,
     removeNote,
     getNewNote,
-    saveNote
+    saveNote,
+    createTodo,
+    convertYoutubeUrl
 };
 
 var gNotes;
 
+
+function convertYoutubeUrl(url) {
+    if (url.split('=').length === 1) return url;
+    var youtubeId = url.split('=')[1];
+    return `https://www.youtube.com/embed/${youtubeId}`;
+}
+
 function saveNote(newNote) {
+    if (newNote.url && newNote.type === 'videoNote') newNote.url = convertYoutubeUrl(newNote.url)
+    
     var noteIdx = gNotes.findIndex(note => note.id === newNote.id);
     if (noteIdx !== -1) {
         gNotes.splice(noteIdx, 1, newNote);
