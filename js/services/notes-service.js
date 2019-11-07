@@ -11,21 +11,39 @@ export default {
     removeTodo,
     addTodo,
     markTodo,
-    removeNote
+    removeNote,
+    getNewNote,
+    saveNote
 };
 
 var gNotes;
 
-function getNewNote(noteType) {
-    if (noteType === textPreview) {
-        return Promise.resolve({
-            id: utils.getRandomId(),
-            type: textPreview,
-            txt: '',
-            title: '',
-            style: {}
-        })
+function saveNote(newNote) {
+    var noteIdx = gNotes.findIndex(note => note.id === newNote.id);
+    if (noteIdx !== -1) {
+        gNotes.splice(noteIdx, 1, newNote);
     }
+    else gNotes.unshift(newNote);
+    return saveNotesToStorage()
+        .then(() => Promise.resolve(newNote));
+}
+
+function getNewNote(noteType) {
+    var newNote = {
+        id: utils.getRandomId(),
+        type: noteType,
+        createdAt: Date.now(),
+        title: '',
+        style: {},
+        isPined: false
+    } 
+    if (noteType === 'textNote') newNote.txt = '';
+    if (noteType === 'audioNote' || 
+        noteType === 'videoNote' || 
+        noteType === 'imageNote') newNote.url = '';
+    if (noteType === 'todoNote') newNote.todos = [];
+    
+    return Promise.resolve(newNote);
 }
 
 function removeNote(noteId) {
@@ -98,7 +116,7 @@ var someNotes = [
     {
         id: utils.getRandomId(),
         createdAt: Date.now(),
-        type: 'textPreview',
+        type: 'textNote',
         title: 'my note',
         txt: 'some note\nLorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, consequuntur distinctio est vitae optio, nihil assumenda fugit ad blanditiis nesciunt ducimus incidunt quo facilis aliquid obcaecati, quos corporis doloribus vero.',
         style: {
@@ -112,7 +130,7 @@ var someNotes = [
     {
         id: utils.getRandomId(),
         createdAt: Date.now(),
-        type: 'imagePreview',
+        type: 'imageNote',
         title: 'my image',
         url: 'http://vignette1.wikia.nocookie.net/marveldatabase/images/a/a9/Spider-Man_Vol_1_1.jpg/revision/latest?cb=20080331205551',
         style: {
@@ -125,7 +143,7 @@ var someNotes = [
     {
         id: utils.getRandomId(),
         createdAt: Date.now(),
-        type: 'videoPreview',
+        type: 'videoNote',
         title: 'my video',
         url: 'https://www.youtube.com/embed/otrH5hxJ2GE',
         style: {
@@ -138,7 +156,7 @@ var someNotes = [
     {
         id: utils.getRandomId(),
         createdAt: Date.now(),
-        type: 'audioPreview',
+        type: 'audioNote',
         title: 'my audio',
         url: 'https://www.youtube.com/embed/TO8hj4b6zOk',
         style: {
@@ -151,7 +169,7 @@ var someNotes = [
     {
         id: utils.getRandomId(),
         createdAt: Date.now(),
-        type: 'todoPreview',
+        type: 'todoNote',
         title: 'my todo',
         todos: [
             {

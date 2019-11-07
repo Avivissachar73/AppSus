@@ -4,59 +4,55 @@ import notesService from '../../services/notes-service.js';
 
 import shortedTxt from './short-txt.cmp.js';
 
-var textPreview = {
-    name: 'textPreview',
+var textNote = {
+    name: 'textNote',
     props: ['note'],
     template: `
-        <div>
-            <shorted-txt :txt="note.txt" :txtLimit="150"></shorted-txt>
-        </div>
+        <shorted-txt :txt="note.txt" :txtLimit="150"></shorted-txt>
     `,
     components: {
         shortedTxt
     }
 }
 
-var audioPreview = {
-    name: 'audioPreview',
+var audioNote = {
+    name: 'audioNote',
     props: ['note'],
     template: `
-        <div>
-            <audio controls :src="note.url" controls="controls"/>
-                <!-- <source :src="note.url" type="audio/ogg">
-                <source :src="note.url" type="audio/mpeg">
-            </audio> -->
-        </div>
+        <!-- <audio controls :src="note.url" controls="controls"/> -->
+        <audio controls>
+            <source :src="note.url" type="audio/mpeg"/>
+        </audio>
+        <!-- <audio controls/>
+            <source :src="note.url" type="audio/ogg">
+            <source :src="note.url" type="audio/mpeg">
+        </audio> -->
     `,
 }
 
-var videoPreview = {
-    name: 'videoPreview',
+var videoNote = {
+    name: 'videoNote',
     props: ['note'],
     template: `
-        <div>
-            <iframe :src="note.url"/>
-        </div>
+        <iframe :src="note.url"/>
     `,
 }
 
-var imagePreview = {
-    name: 'imagePreview',
+var imageNote = {
+    name: 'imageNote',
     props: ['note'],
     template: `
-        <div>
-            <img :src="note.url"/>
-        </div>
+        <img :src="note.url"/>
     `,
 }
 
-var todoPreview = {
-    name: 'todoPreview',
+var todoNote = {
+    name: 'todoNote',
     props: ['note'],
     template: `
         <div>
             <form @submit.prevent="onAddTodo" class="flex">
-                <input type="text" placeholder="Add todo" @input="checkNewTodoTxt(note.id)" v-model="newTodos[note.id]"/>
+                <input type="text" placeholder="Add todo" v-model="newTodoTxt"/>
                 <button>+</button>
             </form>
             <ul class="clean-list">
@@ -69,7 +65,7 @@ var todoPreview = {
     `,
     data() {
         return {
-            newTodos: {}
+            newTodoTxt: ''
         }
     },
     methods: {
@@ -82,24 +78,26 @@ var todoPreview = {
                 .then(() => console.log('todo was toggled!'))
         },
         onAddTodo() {
-            var id = this.note.id
-            if (!this.newTodos[id]) return;
-            notesService.addTodo(id, this.newTodos[id]);
-            this.newTodos[id] = '';
+            if (!this.newTodoTxt) return;
+            notesService.addTodo(this.note.id, this.newTodoTxt);
+            this.newTodoTxt = '';
         },
-        checkNewTodoTxt(noteId) {
-            if (this.newTodos[noteId].length > 20) {
-                this.newTodos[noteId] = this.newTodos[noteId].slice(0, 20);
+    },
+    watch: {
+        newTodoTxt(currVall) {
+            if (currVall.length > 20) {
+                this.newTodoTxt = this.newTodoTxt.slice(0, 20);
             }
-        },
+
+        }
     }
 }
 
 export default {
-    name: 'note-preview',
+    name: 'note-Preview',
     props: ['note'],
     template: `
-        <div class="note-preview flex column flex-start" :style="note.style">
+        <div class="note-preview flex column align-center justify-center" :style="note.style">
             <h5>{{note.title}}</h5>
 
             <component :is="note.type" :name="note.type" :note="note"/>
@@ -129,10 +127,10 @@ export default {
         }
     },
     components: {
-        textPreview,
-        audioPreview,
-        videoPreview,
-        todoPreview,
-        imagePreview
+        textNote,
+        audioNote,
+        videoNote,
+        todoNote,
+        imageNote
     }
 }

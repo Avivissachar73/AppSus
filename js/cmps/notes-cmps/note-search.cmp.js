@@ -7,11 +7,11 @@ export default {
             <input type="text" placeholder="Search" v-model="filterBy.searchStr" @input="onSearch"/>
             <select v-model="filterBy.type" @change="onSearch">
                 <option value="All" label="All"/>
-                <option value="textPreview" label="Text"/>
-                <option value="videoPreview" label="Video"/>
-                <option value="imagePreview" label="Image"/>
-                <option value="audioPreview" label="Audio"/>
-                <option value="todoPreview" label="Todo"/>
+                <option value="textNote" label="Text"/>
+                <option value="videoNote" label="Video"/>
+                <option value="imageNote" label="Image"/>
+                <option value="audioNote" label="Audio"/>
+                <option value="todoNote" label="Todo"/>
             </select>
         </section>
     `,

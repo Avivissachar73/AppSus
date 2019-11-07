@@ -4,17 +4,19 @@ export default {
     name: 'short-txt',
     props: ['txt', 'txtLimit'],
     template: `
-        <p v-if="txt.length < txtLimit">{{txt}}</p>
-        <div v-else class="shorted-txt">
-            <p v-if="!isShowAllTxt">
-                {{shortedTxt}}
-                <button @click="onReadMore">{{buttonMsg}}</button>
-            </p>
-            <p v-else>
-                {{txt}}
-                <button @click="onReadMore">{{buttonMsg}}</button>
-            </p>
-        </div>
+        <section style="overflow:overlay;width:100%;">
+            <p v-if="txt.length < txtLimit">{{txt}}</p>
+            <div v-else class="shorted-txt">
+                <p v-if="!isShowAllTxt">
+                    {{shortedTxt}}
+                    <button @click="onReadMore">{{buttonMsg}}</button>
+                </p>
+                <p v-else>
+                    {{txt}}
+                    <button @click="onReadMore">{{buttonMsg}}</button>
+                </p>
+            </div>
+        </section>
     `,
     data() {
         return {

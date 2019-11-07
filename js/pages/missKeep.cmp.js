@@ -14,8 +14,8 @@ export default {
                 <h2>My notes</h2>
                 <notes-search @search="onSearch"></notes-search>
             </header>
-            <note-list :notes="notesToShow"></note-list>
             <note-edit></note-edit>
+            <note-list :notes="notesToShow"></note-list>
         </section>
     `,
     data() {

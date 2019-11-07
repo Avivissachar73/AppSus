@@ -8,15 +8,15 @@
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
-    width: 200px;
+    width: 225px;
     /* height: 120px; */
 }
 
-.note-preview img, .note-preview iframe {
+.note-preview img, .note-preview iframe, .note-preview audio {
     /* height: 85%; */
-    height: 90px;
+    /* height: 90px; */
     width: 85%;
-    object-fit: cover;
+    /* object-fit: cover; */
 }
 
 .done-todo {

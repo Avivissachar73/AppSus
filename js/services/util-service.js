@@ -9,9 +9,9 @@ export default {
 
 function getRandomId() {
     var pt1 = Date.now().toString(16);
-    var pt2 = getRandomInt(100, 999).toString(16);
-    var pt3 = getRandomInt(100, 999).toString(16);
-    return pt3 + pt1 + pt2;
+    var pt2 = getRandomInt(1000, 9999).toString(16);
+    var pt3 = getRandomInt(1000, 9999).toString(16);
+    return `${pt3}${pt1}${pt2}`.toUpperCase();
 }
 
 function saveToLocalStorage(key, value) {
