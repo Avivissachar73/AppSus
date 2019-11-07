@@ -5,6 +5,7 @@
 
 .note-preview {
     background-color: rgba(73, 252, 73, 0.6);
+    box-shadow: 0px 0px 20px -7px rgba(0,0,0,0.75);
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
@@ -19,6 +20,49 @@
     /* object-fit: cover; */
 }
 
+.note-preview > * {
+    margin-bottom: 5px;
+}
+
 .done-todo {
     text-decoration-line: line-through;
+}
+
+.notes-keep-app {
+    padding: 10px;
+}
+
+.notes-keep-app > * {
+    margin-bottom: 10px;
+}
+.notes-keep-app >:first-child {
+    margin-top: 10px;
+}
+
+.notes-keep-app button {
+    background-color: rgba(223, 210, 210, 0.3);
+}
+
+.notes-keep-app button, .notes-keep-app label {
+    /* font-size: 1.3rem;
+    border: 1px solid black;
+    border-radius: 7.5px; */
+    margin: 3px;
+}
+.notes-keep-app label:hover {
+    cursor: pointer;
+}
+
+/* .add-note-radios {
+    margin-left: 10px;
+} */
+
+.add-note-radios input[type="radio"] {
+    visibility: hidden;
+}
+
+.add-note-radios label {
+    /* width: 30px; */
+    font-size: 1.3rem;
+    text-align: center;
 }

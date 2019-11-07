@@ -9,12 +9,12 @@ import notesSearch from '../cmps/notes-cmps/note-search.cmp.js'
 export default {
     name: 'miss-keep',
     template: `
-        <section>
+        <section class="notes-keep-app">
+            <!-- <button @click="clearStorage">clear local storage</button> -->
             <header class="flex space-around">
                 <h2>My notes</h2>
                 <notes-search @search="onSearch"></notes-search>
             </header>
-            <button @click="clearStorage">clear local storage</button>
             <note-edit></note-edit>
             <note-list :notes="notesToShow"></note-list>
         </section>

@@ -21,6 +21,10 @@ var options = {
                 </section>
             </header>
             <router-view class="container router-preview"></router-view>
+
+            <footer class="flex align-center justify-center">
+                <h5>&copy; Created by Aviv Issachar and Adi Pinhas</h5>
+            </footer>
         </main>
     `,
     components: {
