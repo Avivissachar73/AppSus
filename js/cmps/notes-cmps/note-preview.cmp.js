@@ -1,6 +1,7 @@
 'use strict';
 
 import notesService from '../../services/notes-service.js';
+import mapService from '../../services/miss-keep-services/map-service.js';
 
 import {eventBus} from '../../services/event-bus-service.js';
 
@@ -90,20 +91,38 @@ var todoNote = {
     }
 }
 
+var mapNote = {
+    name: 'map-note',
+    props: ['note'],
+    template: `
+        <div ref="googleMap"></div>
+    `,
+    data() {
+        return {
+            map: {}
+        }
+    },
+    created() {
+        // mapService.initMap(this.$refs.googleMap)
+        //     .then(map => {
+        //         this.map = map;
+        //     })
+    }
+}
+
 export default {
     name: 'note-Preview',
     props: ['note'],
     template: `
         <div class="note-preview flex column align-center justify-center" :style="note.style">
-            <h5>{{note.title}}</h5>
+            <h4>{{note.title}}</h4>
 
             <component :is="note.type" :name="note.type" class="note-data" :note="note"/>
             
             <div class="flex space-around">
                 <button @click="onPinNote">{{pinMsg}}</button>
-                <!-- <button @click="onOpenEdit">Edit</button> -->
                 <button @click="onOpenEdit">&#10002;</button>
-                <!-- <button @click="onRemoveNote">Remove</button> -->
+                <button @click="onSendNote" v-if="note.txt">Send</button>
                 <button @click="onRemoveNote">&#10005;</button>
             </div>
         </div>
@@ -113,7 +132,6 @@ export default {
             return {'font-family': this.note.fontFamily, 'color': this.note.fontColor};
         },
         pinMsg() {
-            // return (this.note.isPined)? 'un pin' : 'Pin it';
             return (this.note.isPined)? '➶' : '➴';
         }
     },
@@ -121,12 +139,18 @@ export default {
         onPinNote() {
             notesService.pinNote(this.note.id);
         },
-        onRemoveNote() {
+        removeNote() {
             notesService.removeNote(this.note.id)
                 .then(() => console.log('note has been removed successfully'))
         },
+        onRemoveNote() {
+            eventBus.$emit('Confirm', 'Are you sure you want to remove tis note? you wold not be able to restore it.', this.removeNote);
+        },
         onOpenEdit() {
             eventBus.$emit('editNote', this.note.id);
+        },
+        onSendNote() {
+            console.log('sending', this.note)
         }
     },
     components: {
@@ -134,6 +158,7 @@ export default {
         audioNote,
         videoNote,
         todoNote,
-        imageNote
+        imageNote,
+        mapNote
     }
 }

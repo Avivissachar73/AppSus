@@ -3,6 +3,7 @@
 @import './miss-notes.css';
 @import './emails.css';
 @import './miss-books.css';
+@import './alert.css';
 
 /* body {
     background-color: rgba(238, 229, 229, 0.836);
@@ -54,14 +55,15 @@ header .container {
 .container {
     margin: 0 auto;
     /* width: 80%; */
-    width: 90%;
+    /* width: 90%; */
+    width: 100%;
     height: 100%;
 }
 
 @media (max-width: 1000px) {
     .container {
         /* width: 90%; */
-        width: 100%;
+        /* width: 100%; */
     }
 }
 @media (max-width: 650px) {

@@ -4,12 +4,12 @@
 }
 
 .notes-keep-app header > * {
-    width: 50%
+    margin: 10px;
 }
 
-/* .notes-keep-app header .note-search {
-
-} */
+.notes-keep-app > * {
+    padding: 10px;
+}
 
 .note-preview {
     background-color: rgba(73, 252, 73, 0.6);
@@ -17,30 +17,22 @@
     border-radius: 3px;
     margin: 10px;
     padding: 10px;
-    /* width: 225px; */
     width: 100%;
-    /* height: 120px; */
 }
 
-/* .note-preview img, .note-preview iframe, .note-preview audio {
-    width: 200px;
-    width: 85%;
-} */
+.note-preview > * {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 .note-data {
     width: 95%;
 }
 
 
-.note-preview > * {
-    margin-bottom: 5px;
-}
 
 .done-todo {
     text-decoration-line: line-through;
-}
-
-.notes-keep-app {
-    padding: 10px;
 }
 
 .notes-keep-app > * {
@@ -54,9 +46,7 @@
     background-color: rgba(223, 210, 210, 0.3);
 }
 
-.notes-keep-app button, .notes-keep-app label {
-    margin: 3px;
-}
+
 .notes-keep-app label:hover {
     cursor: pointer;
 }
@@ -72,16 +62,17 @@
     visibility: hidden;
 }
 .add-note-radios label {
+    margin: 0 auto;
     text-align: center;
-    /* margin-left: 10px; */
+    width: 100%;
 }
 .add-note-radios button {
+    padding: 0;
     width: 30px;
     height: 30px;
     background-color: unset;
     font-size: 1.3rem;
     text-align: center;
-
 }
 
 .note-edit-modal {
@@ -89,8 +80,7 @@
     border: 1px solid black;
     border-radius: 10px;
     position: fixed;
-    /* bottom: 50%; */
-    top: 10vh;
+    top: 12vh;
     right: 50%;
     transform: translate(50%, 0);
     padding: 10px;
@@ -105,6 +95,9 @@
     right: 5px;
 }
 
+.note-edit-form {
+    width: 100%;
+}
 
 .note-edit-form > *:not(button) {
     margin-bottom: 5px;
@@ -119,11 +112,47 @@
     border-bottom: 1px solid rgba(78, 75, 75, 0.5);
 }
 
-/* .note-edit-form input[type="text"], .note-edit-form textarea {
-    background: unset;
-    border: unset;
-    border-bottom: 1px solid rgba(78, 75, 75, 0.5);
-} */
+.new-note-styling input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.new-note-styling > * {
+    margin-bottom: 10px;
+}
+.color-palate > * {
+    margin-bottom: 10px;
+}
+
+.color-palate-container {
+    width: 100%;
+}
+
+.margin-bottom-5px {
+    margin-bottom: 5px;
+}
+
+
+.palate-color {
+    border: 1px solid black;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+}
+
+.selected-color {
+    border: none;
+    box-shadow: 0px 0px 20px -2px rgba(0,0,0,0.75);
+    transform: scale(1.2);
+}
+
+.edit-color-palate-btn {
+    border-radius: 0;
+    background: none !important;
+    border: none;
+    font-size: 1rem;
+    border-bottom: 1px solid black;
+}
 
 .note-list {
     margin: 0 auto;
@@ -131,8 +160,6 @@
 }
 
 .note-list > * {
-    /* width: fit-content; */
-    /* text-align: center; */
     -webkit-column-break-inside: avoid;
     page-break-inside: avoid;
     break-inside: avoid;
@@ -140,8 +167,25 @@
 
 .note-list li {
     margin: 0 auto;
-    /* width: fit-content; */
 }
+
+.pinned-notes {
+    background-color: rgba(190, 186, 186, 0.5);
+    box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.75);
+}
+
+.colors-edit-modal {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 250px;
+    height: 200px;
+    top: 15vh;
+    right: 50%;
+    transform: translate(50%, 0);
+}
+
 
 @media (max-width: 1100px) {
     .note-list {

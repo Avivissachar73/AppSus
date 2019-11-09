@@ -4,6 +4,8 @@ import utils from './util-service.js';
 
 const NOTES_STOREGE_KEY = 'my_notes';
 
+const COLOR_PALATE_KEY = 'my_note_color_palate';
+
 export default {
     getNotes,
     pinNote,
@@ -15,16 +17,38 @@ export default {
     getNewNote,
     saveNote,
     createTodo,
-    convertYoutubeUrl
+    convertYoutubeUrl,
+    getColorPalate,
+    saveColorPalate
 };
 
 var gNotes;
 
+function saveColorPalate(colorPalate) {
+    return utils.saveToLocalStorage(COLOR_PALATE_KEY, colorPalate)
+        .then(() => Promise.resolve())
+}
+
+function getColorPalate() {
+    return utils.loadFromLocalStorage(COLOR_PALATE_KEY)
+        .then(colors => {
+            return colors;
+        })
+        .catch(() => {
+            return {
+                'background-color': ['#fff', '#000', '#333', '#666', '#444', '#111'],
+                'color': ['#fff', '#000', '#333', '#666', '#444', '#111']
+            };
+        })
+}
 
 function convertYoutubeUrl(url) {
-    if (url.split('=').length === 1) return url;
-    var youtubeId = url.split('=')[1];
-    return `https://www.youtube.com/embed/${youtubeId}`;
+    if (url.toLowerCase().includes('youtube')) {
+        if (url.split('=').length === 1) return url;
+        var youtubeId = url.split('=')[1];
+        return `https://www.youtube.com/embed/${youtubeId}`;
+    }
+    else return url;
 }
 
 function saveNote(newNote) {
@@ -202,6 +226,19 @@ var someNotes = [
                 isDone: false
             },
         ],
+        style: {
+            'background-color': 'lightgreen',
+            'font-family': '',
+            'color': 'red'
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'mapNote',
+        title: 'my map',
+        pos: {lat: 0, lng: 0},
         style: {
             'background-color': 'lightgreen',
             'font-family': '',
