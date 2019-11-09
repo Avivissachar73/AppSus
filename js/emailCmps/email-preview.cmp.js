@@ -2,7 +2,9 @@
 
 
 import { eventBus } from "../services/event-bus-service.js";
-import {mailsService} from '../services/email-services.js'
+import {mailsService} from '../services/email-services.js';
+import noteService from '../services/notes-service.js'
+ import emailShortText from '../emailCmps/emailShortText.cmp.js'
 
 
 export default {
@@ -14,9 +16,14 @@ export default {
          
                 <div>
                {{mail.title}}
-               </div>
-               <div>
+               <div class="smallSize">
                 {{mail.from}}
+                <email-short-text :txtLimit="30" :txt="mail.subtitle"></email-short-text>
+                </div>
+                </div>
+               <div class="smallSize" >
+               {{mail.time}}
+               {{mail.date}}
                 <button @click.stop="starringMail" v-if="!mail.isStarred">✰</button>
                 <button @click.stop="starringMail" v-else>⭐</button>
                 
@@ -25,10 +32,12 @@ export default {
            </div>
                 <div class="sub-title-perview" v-if="selected">
                 <button @click="deleteMail">🗑️</button>
+                <button @click="makeNote">n</button>
                 <router-link :to="'/misterEmail/details'+mail.id"> 📖</router-link>
+                <email-short-text :txtLimit="130" :txt="mail.subtitle"></email-short-text>
                
                     
-                    <p> {{mail.subtitle}}</p>
+                   
                 
             </div>
         </section>
@@ -55,7 +64,23 @@ export default {
             //   this.isStarred=!this.isStarred
             //  mailsService.starringEmail(this.mail.id)
             eventBus.$emit('starring',this.mail.id)
-        }, 
+        },
+        makeNote(){
+            noteService.getNewNote('textNote')
+                .then(note=>{
+                    note.title= this.mail.title,
+                    note.txt=this.mail.subtitle,
+                    noteService.saveNote(note)
+                    
+
+                })
+
+
+
+        }
+    },
+    components:{
+        emailShortText
     }
     
   

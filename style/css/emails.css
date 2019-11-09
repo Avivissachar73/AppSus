@@ -45,3 +45,13 @@
     background-color:rgba(221, 188, 41, 0.603); 
     font-weight: 700;
 }
+.smallSize{
+    font-size: small;
+    color: rgb(99, 96, 96);
+}
+.bar{
+    background-color:black;
+}
+.precent{
+    background-color: blanchedalmond;
+}

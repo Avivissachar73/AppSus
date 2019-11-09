@@ -7,7 +7,10 @@ export default {
     
     template: `
         <section>
-            {{mail.title}}
+        <div>{{mail.title}}</div>
+        <div>{{mail.from}}</div>
+        <div>{{mail.time}}  {{mail.date}}</div>
+        <div>{{mail.subtitle}}</div>
         </section>
     `,
     data(){

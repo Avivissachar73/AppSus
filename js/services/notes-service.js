@@ -23,6 +23,7 @@ export default {
 };
 
 var gNotes;
+getNotes();
 
 function saveColorPalate(colorPalate) {
     return utils.saveToLocalStorage(COLOR_PALATE_KEY, colorPalate)
