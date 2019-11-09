@@ -13,6 +13,7 @@ export default {
     template: `
         <main>
             <section v-if="!selectedBook">
+                <router-link to="/books/add">add books</router-link>
                 <book-filter @getFilterBy="setFilterBy" :categories="categories"></book-filter>
                 <book-list :books="booksToShow" @bookSelected="selectBook"></book-list>
             </section>

@@ -2,6 +2,8 @@
 
 import notesService from '../../services/notes-service.js';
 
+import mapService from '../../services/miss-keep-services/map-service.js';
+
 import notePalateEdit from '../notes-cmps/color-edit.cmp.js';
 
 import {eventBus} from '../../services/event-bus-service.js';
@@ -10,40 +12,38 @@ export default {
     name: 'edit-note',
     template: `
         <section>
-            <!-- <form class="add-note-container flex align-center space-between"> -->
-            <form class="add-note-container">
+            <section class="add-note-container">
                 <!-- <h4>Add:</h4> -->
                 <div class="add-note-radios flex align-center space-around">
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="textRadio">&tcaron;</label></button>
-                        <!-- <label class="flex align-center justify-center" for="textRadio"><button class="flex align-center justify-center">&tcaron;</button></label> -->
                         <input id="textRadio" type="radio" value="textNote" v-model="type"/>
                     </div>
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="imageRadio">&#10064;</label></button>
-                        <!-- <label class="flex align-center justify-center" for="imageRadio"><button class="flex align-center justify-center">&#10064;</button></label> -->
                         <input id="imageRadio" type="radio" value="imageNote" v-model="type"/>
                     </div>
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="videoRadio">▷</label></button>
-                        <!-- <label class="flex align-center justify-center" for="videoRadio"><button class="flex align-center justify-center">▷</button></label> -->
                         <input id="videoRadio" type="radio" value="videoNote" v-model="type"/>
                     </div>
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="audioRadio">&#9833;</label></button>
-                        <!-- <label class="flex align-center justify-center" for="audioRadio"><button class="flex align-center justify-center">&#9833;</button></label> -->
                         <input id="audioRadio" type="radio" value="audioNote" v-model="type"/>
                     </div>
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="todoRadio">&#9776;</label></button>
-                        <!-- <label class="flex align-center justify-center" for="todoRadio"><button class="flex align-center justify-center">&#9776;</button></label> -->
                         <input id="todoRadio" type="radio" value="todoNote" v-model="type"/>
                     </div>
+                    <div class="flex">
+                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="mapRadio">map</label></button>
+                        <input id="mapRadio" type="radio" value="mapNote" v-model="type"/>
+                    </div>
                 </div>
-            </form>
+            </section>
 
             <section  v-if="noteId || type" :style="note.style" class="note-edit-modal flex align-center justify-center">
-            <!-- <section  v-if="note" class="note-edit-modal flex align-center justify-center"> -->
+            <!-- <section  v-if="note" :style="note.style" class="note-edit-modal flex align-center justify-center"> -->
                 <button class="close-modal-button" @click="onCloseEdit">&#10005;</button>
 
                 <form @submit.prevent="onSaveNote" class="note-edit-form flex column flex-start">
@@ -63,6 +63,14 @@ export default {
                                 {{todo.txt}}
                             </li>
                         </ul>
+                    </div>
+
+                    <div v-if="note.type === 'mapNote'">
+                        <form @submit.prevent="onSearchMap">
+                            <input type="text" placeholder="Search a place" v-model="mapSearchStr"/>
+                            <button>Search</button>
+                        </form>
+                        <div ref="googleMap" style="height: 200px"></div>
                     </div>
                     
                     <div class="new-note-styling flex column align-center">
@@ -94,7 +102,10 @@ export default {
             newTodoTxt: '',
             isEditColorPalate: false,
             colorPalate: null,
-            currEditColorIdx: -1
+            // currEditColorIdx: -1,
+            mapSearchStr: '',
+            map: {},
+            marker: null
         }
     },
     computed: {
@@ -125,11 +136,10 @@ export default {
     methods: {
         getNote() {
             if (!this.noteId) {
-                notesService.getNewNote(this.type)
+                return notesService.getNewNote(this.type)
                     .then(note => this.note = {...note});
-                return;
             } else {
-                notesService.getNoteById(this.noteId)
+                return notesService.getNoteById(this.noteId)
                     .then(note => this.note = {...note});
             }
         },
@@ -172,21 +182,43 @@ export default {
             this.isEditColorPalate = !this.isEditColorPalate;
             if (isReLoadColors) this.getColorPalate();
         },
+        setMap() {
+            if (this.note.type === 'mapNote') {
+                mapService.initMap(this.$refs.googleMap, this.note.pos.lat, this.note.pos.lng)
+                    .then(map => {
+                        this.map = map;
+                        this.marker = mapService.addMarker(this.map, this.map.center);
+                    })
+            }
+        },
+        onSearchMap() {
+            mapService.getCoordJsonByStr(this.mapSearchStr)
+                .then(data => {
+                    this.note.pos = data.results[0].geometry.location;
+                    console.log(this.note.pos)
+                    var laLatLng = new google.maps.LatLng(this.note.pos.lat, this.note.pos.lng);
+                    this.map.panTo(laLatLng);
+                    this.marker = mapService.addMarker(this.map, this.map.center);
+                })
+        }
     },
     created() {
         eventBus.$on('editNote', (noteId) => {
             this.noteId = noteId;
         })
         this.getColorPalate();
-        // this.getNote();
+    },
+    mounted() {
     },
     watch: {
         type() {
-            this.getNote();
-        },
+            this.getNote()
+                .then(() => this.setMap())
+            },
         noteId() {
-            this.getNote();
-        }
+            this.getNote()
+                .then(() => this.setMap())
+        },
     },
     components: {
         notePalateEdit

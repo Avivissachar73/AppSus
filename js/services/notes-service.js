@@ -1,6 +1,7 @@
 'use strict';
 
 import utils from './util-service.js';
+import {currPos} from './miss-keep-services/map-service.js';
 
 const NOTES_STOREGE_KEY = 'my_notes';
 
@@ -23,10 +24,11 @@ export default {
 };
 
 var gNotes;
+getNotes();
 
 function saveColorPalate(colorPalate) {
     return utils.saveToLocalStorage(COLOR_PALATE_KEY, colorPalate)
-        .then(() => Promise.resolve())
+        .then(() => Promise.resolve());
 }
 
 function getColorPalate() {
@@ -36,8 +38,8 @@ function getColorPalate() {
         })
         .catch(() => {
             return {
-                'background-color': ['#fff', '#000', '#333', '#666', '#444', '#111'],
-                'color': ['#fff', '#000', '#333', '#666', '#444', '#111']
+                'background-color': ['#fff', '#000', '#e62117', '#17e65a', '#e6a017', '#065fd4'],
+                'color': ['#fff', '#000', '#e62117', '#17e65a', '#e6a017', '#065fd4']
             };
         })
 }
@@ -77,6 +79,8 @@ function getNewNote(noteType) {
         noteType === 'videoNote' || 
         noteType === 'imageNote') newNote.url = '';
     if (noteType === 'todoNote') newNote.todos = [];
+    // if (noteType === 'mapNote') newNote.pos = {lat: 0, lng: 0};
+    if (noteType === 'mapNote') newNote.pos = currPos;
     
     return Promise.resolve(newNote);
 }
@@ -238,7 +242,7 @@ var someNotes = [
         createdAt: Date.now(),
         type: 'mapNote',
         title: 'my map',
-        pos: {lat: 0, lng: 0},
+        pos: {lat: 32.0749831, lng: 34.9120554},
         style: {
             'background-color': 'lightgreen',
             'font-family': '',

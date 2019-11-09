@@ -14,9 +14,7 @@ var options = {
                     <button @click="onTogglenNav" class="main-nav-button">&#9783;</button>
                     <ul ref="mainNav" class="main-nav-bar clean-list flex wrap space-around">
                         <router-link to="/"><li>Home</li></router-link>
-                        <router-link to="/about"><li>About</li></router-link>
                         <router-link to="/books"><li>MissBooks</li></router-link>
-                        <router-link to="/books/add"><li>add books</li></router-link>
                         <router-link to="/misterEmail"><li>MisterEmail</li></router-link>
                         <router-link to="/missKeep"><li>MissKeep</li></router-link>
                     </ul>

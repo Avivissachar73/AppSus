@@ -3,6 +3,8 @@
 import notesService from '../../services/notes-service.js';
 import mapService from '../../services/miss-keep-services/map-service.js';
 
+import {mailsService} from '../../services/email-services.js';
+
 import {eventBus} from '../../services/event-bus-service.js';
 
 import shortedTxt from './short-txt.cmp.js';
@@ -95,19 +97,26 @@ var mapNote = {
     name: 'map-note',
     props: ['note'],
     template: `
-        <div ref="googleMap"></div>
+        <div hidden ref="googleMap" style="height: 250px; overflow: hidden;"></div>
     `,
     data() {
         return {
-            map: {}
+            map: {},
+            marker: null
         }
     },
-    created() {
-        // mapService.initMap(this.$refs.googleMap)
-        //     .then(map => {
-        //         this.map = map;
-        //     })
-    }
+    methods: {
+        setMap() {
+            mapService.initMap(this.$refs.googleMap, this.note.pos.lat, this.note.pos.lng)
+                .then(map => {
+                    this.map = map;
+                    this.marker = mapService.addMarker(this.map, this.map.center);
+                })
+        }
+    },
+    mounted() {
+        this.setMap();
+    },
 }
 
 export default {
@@ -150,7 +159,10 @@ export default {
             eventBus.$emit('editNote', this.note.id);
         },
         onSendNote() {
-            console.log('sending', this.note)
+            console.log('sending', this.note);
+            mailsService.addMail({title: this.note.title, 
+                                 subtitle: this.note.txt, 
+                                 from: 'Notes'});
         }
     },
     components: {

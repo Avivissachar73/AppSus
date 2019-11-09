@@ -14,6 +14,7 @@ export const mailsService={
     
 }
 var gMails;
+getMails();
 
 function addMail(newMail){
      console.log(newMail)

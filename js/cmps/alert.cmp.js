@@ -6,7 +6,7 @@ export default {
     name: 'alert',
     template: `
         <section v-if="msgTxt" class="flex column align-center justify-center confirm-modal">
-            <h3>{{title}}</h3>
+            <!-- <h3>{{title}}</h3> -->
             <p>{{msgTxt}}</p>
             <div class="flex align-center space-between">
                 <button @click="confirmFunc">{{confirmMsg}}</button>
@@ -16,6 +16,7 @@ export default {
     `,
     data() {
         return {
+            title: '',
             msgTxt: '',
             cbFunc: null
         }
