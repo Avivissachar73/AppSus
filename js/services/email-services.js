@@ -10,7 +10,8 @@ export const mailsService={
     addMail,
     getMailById,
     starringEmail,
-    readMail
+    readMail,
+    // getUnreadPrecent
     
 }
 var gMails;
@@ -23,17 +24,22 @@ function addMail(newMail){
             title:newMail.title,
             id:utilServices.getRandomId(),
             subtitle:newMail.subtitle,
-            from:'adi',
+            from:newMail.from,
             isFavorie:false,
             isread:false,
             isStarred:false,
             isTrash:false,
-            time:Date.call().split(' ')[4]
+            time:Date.call().split(' ')[4],
+            date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
         }
 
      )
      utilServices.saveToLocalStorage(MAILS_STOREGE_KEY,gMails)
 }
+// function getUnreadPrecent(){
+//     var precent =gMails.length/getUnreadCount()
+//     return precent
+// }
 function starringEmail(id){
     for(var i = 0 ;i < gMails.length ;i++){
         if(gMails[i].id===id){
@@ -57,6 +63,7 @@ function readMail(id){
             gMails[i].isread=true
         }
     }
+    utilServices.saveToLocalStorage(MAILS_STOREGE_KEY,gMails)
 
 }
 
@@ -109,7 +116,8 @@ var someMails=[
         isread:false,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
     },
     {
         title:'mail2',
@@ -120,7 +128,8 @@ var someMails=[
         isread:true,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },
     {
@@ -132,7 +141,8 @@ var someMails=[
         isread:true,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },
     {
@@ -144,7 +154,8 @@ var someMails=[
         isread:false,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },{
         title:'mail5',
@@ -155,7 +166,8 @@ var someMails=[
         isread:false,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },{
         title:'mail6',
@@ -166,7 +178,8 @@ var someMails=[
         isread:false,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },{
         title:'mail7',
@@ -177,7 +190,8 @@ var someMails=[
         isread:true,
         isStarred:true,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },{
         title:'mail8',
@@ -188,7 +202,8 @@ var someMails=[
         isread:false,
         isStarred:false,
         isTrash:false,
-        time:Date.call().split(' ')[4]
+        time:Date.call().split(' ')[4],
+        date:`${Date.call().split(' ')[1]} ${Date.call().split(' ')[2]}`
 
     },
     

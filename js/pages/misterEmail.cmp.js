@@ -11,12 +11,12 @@ export default {
         <section>
             <search-email @filtered="setFilter"></search-email>
             <div class="flex">
-            <side-bar :unReadCount="unreadCount"></side-bar>
+            <side-bar :unreadPrecent="unreadPrecent" :unReadCount="unreadCount"></side-bar>
             <router-view :mails="mailsToShow"></router-view>
             
         </div>
         </section>
-    `,
+        `,
     data(){
         return{
             filterBy:null,
@@ -24,8 +24,9 @@ export default {
             isSelected:false,
             showStars:false,
             showUnread:false,
-            showTrash:false
+            showTrash:false,
           
+            
 
         }
     },
@@ -72,13 +73,16 @@ export default {
     },
     computed:{
         unreadCount(){
-            var unReadCount=1
+            var unReadCount=0
             for(var i = 0 ;i < this.mails.length ;i++){
                 if(!this.mails[i].isread){unReadCount++}
             }
-            
             return unReadCount
         }, 
+        unreadPrecent(){
+            return Math.floor((this.unreadCount/this.mails.length)*100)
+        },
+
         mailsToShow(){
             if(!this.filterBy){return this.mails}
             // if(this.showTrash){

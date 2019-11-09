@@ -1,9 +1,10 @@
 'use strict';
 import { eventBus } from "../services/event-bus-service.js";
+// import {mailsService} from '../services/email-services.js'
 
 
 export default {
-    props:['unReadCount'],
+    props:['unreadPrecent','unReadCount'],
     name: 'side-bar',
    
     template: `
@@ -14,7 +15,12 @@ export default {
             <li @click="showStars" >starred</li>
             <li>sent-mail</li>
             <li :class="{ showing: this.isShowingTrash}" @click="showTrash">trash</li>
-            <li :class="{ showing: this.isShowingUnread}" @click="showUnRead">unread({{unReadCount}})</li>
+            <li :class="{ showing: this.isShowingUnread}" @click="showUnRead"><router-link to="/misterEmail/list">unread({{unReadCount}})</router-link></li>
+            <div class="bar">
+            <div class="precent" :style="{width:unreadPrecent+'%'}"> {{unreadPrecent}}%</div>
+            </div>
+            {{unreadPrecent}}%
+
             
         </ul>
     `, 
@@ -22,11 +28,13 @@ export default {
         return{
             unreadCount:0,
             isShowingTrash:false,
-            isShowingUnread:false
+            isShowingUnread:false,
+            
         }
 
     },
     methods:{
+
         showStars(){
             eventBus.$emit('showStars')
         },
