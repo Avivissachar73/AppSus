@@ -13,7 +13,6 @@ export default {
     data(){
         return{
             mailId:this.$route.params.id,
-            
         }
     },
     computed:{

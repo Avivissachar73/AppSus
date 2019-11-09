@@ -41,6 +41,14 @@ export default {
         // }
     },
     created(){
+        eventBus.$on('starring',(mailId)=>{
+            mailsService.starringEmail(mailId)
+        })
+
+        eventBus.$on('read',(mailId)=>{
+            mailsService.readMail(mailId)
+        })
+
         eventBus.$on('sendingNewMail',(newMail)=>{
             if(newMail.to===''||newMail.subtitle===''){return}
             mailsService.addMail(newMail)
@@ -72,13 +80,17 @@ export default {
             return unReadCount
         }, 
         mailsToShow(){
-           
             if(!this.filterBy){return this.mails}
+            // if(this.showTrash){
+            //     return this.mails.filter(mail=>{
+            //         !mail.isTrash
+            //     })
+            // }
             var regex =new RegExp(`${this.filterBy.name}`,'i')
             return this.mails.filter(mail=>
                 (regex.test(mail.title)|| regex.test(mail.from)
                 ||regex.test(mail.subtitle))&&(!this.showStars || mail.isStarred)&&
-                (!this.showUnread || !mail.isread)&&(this.showTrash||!mail.isTrash))
+                (!this.showUnread || !mail.isread)&&((this.showTrash && mail.isTrash)||(!this.showTrash && !mail.isTrash)))
         }
 
 

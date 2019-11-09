@@ -2,21 +2,22 @@
 
 
 import { eventBus } from "../services/event-bus-service.js";
+import {mailsService} from '../services/email-services.js'
 
 
 export default {
     name: 'email-preview',
     props:['mail'],
     template: `
-        <section @click="selectedPreview" class="email-preview">
-           <div :class="{ unReadMail: !mail.isread}" class="flex space-between align-center ">
+        <section @click="selectedPreview" class="email-preview" :class="{ unReadMail: !mail.isread}">
+           <div  class="flex space-between align-center ">
          
                 <div>
                {{mail.title}}
                </div>
                <div>
                 {{mail.from}}
-                <button @click.stop="starringMail" v-if="!isStarred">✰</button>
+                <button @click.stop="starringMail" v-if="!mail.isStarred">✰</button>
                 <button @click.stop="starringMail" v-else>⭐</button>
                 
                 
@@ -41,20 +42,21 @@ export default {
     methods:{
         selectedPreview(){
             this.selected=!this.selected
+            // this.mail.isread=true
+            eventBus.$emit('read',this.mail.id)
         },
         deleteMail(){
-            this.mail.trash=!this.mail.trash
+             this.mail.trash=!this.mail.trash
             console.log(this.mail.id)
             eventBus.$emit('delete',this.mail.id)
         },
         starringMail(){
-            this.mail.isStarred=!this.isStarred
-            this.isStarred=!this.isStarred
-        }
-        
-        
-
-
+            //   this.mail.isStarred=!this.isStarred
+            //   this.isStarred=!this.isStarred
+            //  mailsService.starringEmail(this.mail.id)
+            eventBus.$emit('starring',this.mail.id)
+        }, 
     }
+    
   
 }

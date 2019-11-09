@@ -34,9 +34,14 @@
 }
 .unReadMail{
     font-weight: 600;
+    background-color: rgba(230, 221, 210, 0.185);
 }
 .compose{
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+.showing{
+    background-color:rgba(221, 188, 41, 0.603); 
+    font-weight: 700;
 }

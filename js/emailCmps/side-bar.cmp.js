@@ -13,14 +13,16 @@ export default {
           
             <li @click="showStars" >starred</li>
             <li>sent-mail</li>
-            <li @click="showTrash">trash</li>
-            <li @click="showUnRead">unread({{unReadCount}})</li>
+            <li :class="{ showing: this.isShowingTrash}" @click="showTrash">trash</li>
+            <li :class="{ showing: this.isShowingUnread}" @click="showUnRead">unread({{unReadCount}})</li>
             
         </ul>
     `, 
     data(){
         return{
-            unreadCount:0
+            unreadCount:0,
+            isShowingTrash:false,
+            isShowingUnread:false
         }
 
     },
@@ -30,9 +32,11 @@ export default {
         },
         showUnRead(){
             eventBus.$emit('showUnread')
+            this.isShowingUnread=!this.isShowingUnread
         },
         showTrash(){
             eventBus.$emit('showTrash')
+            this.isShowingTrash=!this.isShowingTrash
         }
     },
    

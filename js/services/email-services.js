@@ -8,7 +8,9 @@ export const mailsService={
     deleteMail,
     getUnreadCount,
     addMail,
-    getMailById
+    getMailById,
+    starringEmail,
+    readMail
     
 }
 var gMails;
@@ -24,10 +26,21 @@ function addMail(newMail){
             isFavorie:false,
             isread:false,
             isStarred:false,
-            isTrash:false
+            isTrash:false,
+            time:Date.call().split(' ')[4]
         }
 
      )
+     utilServices.saveToLocalStorage(MAILS_STOREGE_KEY,gMails)
+}
+function starringEmail(id){
+    for(var i = 0 ;i < gMails.length ;i++){
+        if(gMails[i].id===id){
+            gMails[i].isStarred=! gMails[i].isStarred
+        }
+    }
+    utilServices.saveToLocalStorage(MAILS_STOREGE_KEY,gMails)
+
 }
 function getMailById(id){
     for(var i = 0 ;i < gMails.length ;i++){
@@ -36,6 +49,14 @@ function getMailById(id){
             return gMails[i]
         }
     }
+}
+function readMail(id){
+    for(var i = 0 ;i < gMails.length ;i++){
+        if(gMails[i].id===id){
+            gMails[i].isread=true
+        }
+    }
+
 }
 
 function getUnreadCount(){
@@ -49,7 +70,9 @@ function getUnreadCount(){
 function deleteMail(mailId){
     for(var i = 0;i<gMails.length;i++){
         if(gMails[i].id===mailId){
+            
             gMails[i].isTrash=true
+            utilServices.saveToLocalStorage(MAILS_STOREGE_KEY,gMails)
         }
     }
     // console.log(mailId,)
@@ -70,6 +93,7 @@ function getMails(){
                 console.log(err);
                 gMails = someMails;
                 resolve(gMails);
+                utilServices.saveToLocalStorage(MAILS_STOREGE_KEY,gMails)
             })
     })
 
@@ -83,7 +107,8 @@ var someMails=[
         isFavorie:false,
         isread:false,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
     },
     {
         title:'mail2',
@@ -93,7 +118,8 @@ var someMails=[
         isFavorie:false,
         isread:true,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },
     {
@@ -104,7 +130,8 @@ var someMails=[
         isFavorie:false,
         isread:true,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },
     {
@@ -115,7 +142,8 @@ var someMails=[
         isFavorie:true,
         isread:false,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },{
         title:'mail5',
@@ -125,7 +153,8 @@ var someMails=[
         isFavorie:true,
         isread:false,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },{
         title:'mail6',
@@ -135,7 +164,8 @@ var someMails=[
         isFavorie:true,
         isread:false,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },{
         title:'mail7',
@@ -145,7 +175,8 @@ var someMails=[
         isFavorie:true,
         isread:true,
         isStarred:true,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },{
         title:'mail8',
@@ -155,7 +186,8 @@ var someMails=[
         isFavorie:true,
         isread:false,
         isStarred:false,
-        isTrash:false
+        isTrash:false,
+        time:Date.call().split(' ')[4]
 
     },
     
