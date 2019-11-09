@@ -4,7 +4,8 @@ export default {
     saveToLocalStorage,
     loadFromLocalStorage,
     getRandomInt,
-    getRandomId
+    getRandomId,
+    getCurrency
 }
 
 function getRandomId() {
@@ -27,6 +28,14 @@ function loadFromLocalStorage(key) {
         }
         else reject(`${key} was not found in local storage`);
     }) 
+}
+
+
+function getCurrency(currencyCode) {
+    if (currencyCode === 'USD') return '$';
+    if (currencyCode === 'EUR') return '€';
+    if (currencyCode === 'ILS') return '₪';
+    else return '#';
 }
 
 

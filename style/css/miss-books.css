@@ -1,0 +1,64 @@
+
+
+.book-preview {
+    margin: 10px;
+    background-color: rgb(238, 208, 153);
+    border-radius: 5px;
+    width: 150px;
+    height: 250px;
+    transition: 0.3s;
+}
+.book-preview:hover {
+    background-color: rgb(240, 222, 190);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.book-preview h2{
+    text-align: center;
+}
+.book-preview img {
+    width: 75px;
+}
+
+.book-details-preview {
+    position: relative;
+    width: 100%;
+    background-color: rgb(240, 222, 190);
+    padding: 15px;
+}
+.book-info > * {
+    margin-bottom: 20px;
+}
+.book-info span:not(.book-price) {
+    color: grey;
+}
+
+.high-price {
+    color: red;
+}
+.low-price {
+    color: green;
+}
+
+/* .book-review { */
+    /* background-color: ; */
+/* } */
+
+.shorted-txt:hover {
+    cursor: pointer;
+}
+
+.user-msg {
+    background-color: aquamarine;
+    border: 5px solid brown;
+    border-radius: 10px;
+    width: 250px;
+    height: 150px;
+    position: fixed;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+}
+.user-msg > * {
+    text-align: center;
+}

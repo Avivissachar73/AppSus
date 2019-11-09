@@ -2,6 +2,7 @@
 @import './helpers.css';
 @import './miss-notes.css';
 @import './emails.css';
+@import './miss-books.css';
 
 /* body {
     background-color: rgba(238, 229, 229, 0.836);
@@ -27,6 +28,11 @@ header .container {
 
 .main-nav-bar {
     width: 70%;
+}
+
+
+.router-link-exact-active {
+    color: rgb(163, 154, 154);
 }
 
 .main-nav-button {

@@ -16,7 +16,9 @@ export default {
                 <notes-search @search="onSearch"></notes-search>
             </header>
             <note-edit></note-edit>
-            <note-list :notes="notesToShow"></note-list>
+            <!-- <note-list :notes="notesToShow"></note-list> -->
+            <note-list :notes="pinedNotes"></note-list>
+            <note-list :notes="unPinedNotes"></note-list>
         </section>
     `,
     data() {
@@ -34,6 +36,12 @@ export default {
                        ((note.type === 'text')? note.txt.toLowerCase().includes(this.filterBy.searchStr.toLowerCase()) : false)) &&
                        (this.filterBy.type === 'All' || note.type === this.filterBy.type);
             })
+        },
+        pinedNotes() {
+            return this.notesToShow.filter(note => note.isPined);
+        },
+        unPinedNotes() {
+            return this.notesToShow.filter(note => !note.isPined);
         }
     },
     methods: {
