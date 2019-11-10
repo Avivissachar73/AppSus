@@ -1,6 +1,6 @@
 'use strict';
 
-import notesService from '../services/notes-service.js';
+import notesService from '../services/miss-keep-services/notes-service.js';
 
 import noteList from '../cmps/notes-cmps/note-list.cmp.js';
 import noteEdit from '../cmps/notes-cmps/edit-note.cmp.js'

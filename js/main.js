@@ -11,12 +11,12 @@ var options = {
             <header class="flex align-center">
                 <section class="container flex align-center space-between">
                     <h1>App Sus</h1>
-                    <button @click="onTogglenNav" class="main-nav-button">&#9783;</button>
+                    <button @click="onToggleNav" class="main-nav-button">&#9783;</button>
                     <ul ref="mainNav" class="main-nav-bar clean-list flex wrap space-around">
-                        <router-link to="/"><li>Home</li></router-link>
-                        <router-link to="/books"><li>MissBooks</li></router-link>
-                        <router-link to="/misterEmail"><li>MisterEmail</li></router-link>
-                        <router-link to="/missKeep"><li>MissKeep</li></router-link>
+                        <li @click="onToggleNav"><router-link to="/">Home</router-link></li>
+                        <li @click="onToggleNav"><router-link to="/books">MissBooks</router-link></li>
+                        <li @click="onToggleNav"><router-link to="/misterEmail">MisterEmail</router-link></li>
+                        <li @click="onToggleNav"><router-link to="/missKeep">MissKeep</router-link></li>
                     </ul>
                 </section>
             </header>
@@ -28,7 +28,7 @@ var options = {
         </main>
     `,
     methods: {
-        onTogglenNav() {
+        onToggleNav() {
             this.$refs.mainNav.classList.toggle('open')
         }
     }

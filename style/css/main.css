@@ -1,19 +1,26 @@
 @import './base.css';
+@import './home.css';
 @import './helpers.css';
 @import './miss-notes.css';
 @import './emails.css';
 @import './miss-books.css';
 @import './alert.css';
 
-/* body {
-    background-color: rgba(238, 229, 229, 0.836);
-} */
+body {
+    /* background: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0%, rgba(122, 250, 2, 0.5) 100%); */
+}
 
 main > header {
+    position: fixed;
+    top: 0;
+    right: 0;
     border-bottom: 1px solid rgba(61, 57, 57, 0.3);
-    background-color: rgba(73, 252, 73, 0.6);
+    /* background-color: rgba(73, 252, 73, 0.6); */
+    background-color: #9aef9a;
     box-shadow: inset 0px 0px 10px -7px rgba(0,0,0,0.75);
+    width: 100%;
     height: 10vh;
+    z-index: 1000000000000000000000000000000000000000000000000000000000;
 }
 
 main > footer {
@@ -33,7 +40,7 @@ header .container {
 
 
 .router-link-exact-active {
-    color: rgb(163, 154, 154);
+    color: rgb(241, 93, 93);
 }
 
 .main-nav-button {
@@ -41,9 +48,11 @@ header .container {
 }
 
 .router-preview {
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0%, rgba(89, 223, 129, 0.5) 100%);
     min-height: 90vh;
     border-right: 1px solid rgba(192, 180, 180, 0.3);
     border-left: 1px solid rgba(192, 180, 180, 0.3);
+    margin-top: 10vh;
 }
 
 .absolute-to-right-corner {
@@ -53,19 +62,14 @@ header .container {
 }
 
 .container {
-    margin: 0 auto;
+    /* margin: 0 auto; */
     /* width: 80%; */
     /* width: 90%; */
     width: 100%;
     height: 100%;
 }
 
-@media (max-width: 1000px) {
-    .container {
-        /* width: 90%; */
-        /* width: 100%; */
-    }
-}
+
 @media (max-width: 650px) {
     .main-nav-button {
         display: block;
@@ -93,15 +97,3 @@ header .container {
     }
 
 }
-
-/* @media (max-width: 600px) {
-    .container {
-        width: 95%;
-        width: 100%;
-    }
-} */
-/* @media (max-width: 500px) {
-    .container {
-        width: 100%;
-    }
-} */

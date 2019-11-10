@@ -1,6 +1,6 @@
 'use strict';
 
-import notesService from '../../services/notes-service.js';
+import notesService from '../../services/miss-keep-services/notes-service.js';
 import mapService from '../../services/miss-keep-services/map-service.js';
 
 import {mailsService} from '../../services/email-services.js';
@@ -131,7 +131,7 @@ export default {
             <div class="flex space-around">
                 <button @click="onPinNote">{{pinMsg}}</button>
                 <button @click="onOpenEdit">&#10002;</button>
-                <button @click="onSendNote" v-if="note.txt">Send</button>
+                <button @click="onSendNote" v-if="note.txt">&#9993;</button>
                 <button @click="onRemoveNote">&#10005;</button>
             </div>
         </div>
@@ -163,6 +163,7 @@ export default {
             mailsService.addMail({title: this.note.title, 
                                  subtitle: this.note.txt, 
                                  from: 'Notes'});
+            eventBus.$emit('Alert', 'Note was sent to emails')
         }
     },
     components: {

@@ -3,8 +3,8 @@
 export default {
     name: 'home',
     template: `
-        <section>
-            <h1>HOME</h1>
+        <section class="home-page flex align-center justify-center">
+            <h1>App Sus</h1>
         </section>
     `,
 }

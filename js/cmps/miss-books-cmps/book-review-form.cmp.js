@@ -16,15 +16,15 @@ export default {
                     <option value="4" label="4"/>
                     <option value="5" label="5"/>
                 </select>
-                read at: <input type="date" v-model="newReview.readAt">
+                read at: <input type="date" value="" v-model="newReview.readAt">
                 <button>Add review</button>
             </form>
-            <pre>{{newReview}}</pre>
         </section>
     `,
     data() {
         return {
-            newReview: {id: Date.now(), reviewer: '', txt: '', readAt: Date.call().split(' ').splice(1,3).join(' '), rate: 3}
+            readAt: Date.call().split(' ').splice(1,3).join(' '),
+            newReview: {id: Date.now(), reviewer: '', txt: '', readAt, rate: 3}
         }
     },
     methods: {

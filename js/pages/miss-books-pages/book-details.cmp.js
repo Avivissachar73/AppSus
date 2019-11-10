@@ -14,9 +14,10 @@ export default {
         <section class="book-details-preview" v-if="book">
             <button @click="getDiffBook(-1)">Prev book</button>
             <button @click="getDiffBook(1)">Next book</button>
-            <section class="book-details flex space-between">
+            <section class="book-info flex column align-center justify-center">
                 <button class="absolute-to-right-corner" @click="onClose">X</button>
-                <div class="book-info">
+                <!-- <div class="book-info"> -->
+                    <a :href="book.thumbnail"><img :src="book.thumbnail"/></a>
                     <h2>Book Id: <span>{{book.id}}</span></h2>
                     <h2>Book authors: <span v-for="author in book.authors">{{author}},</span></h2>
                     <h2>Categories: <span v-for="category in book.categories">{{category}}, </span></h2>
@@ -39,8 +40,7 @@ export default {
                             <p>{{review.reviewer}}: {{review.txt}}</p>
                         </div>
                     </div>
-                </div>
-                <a :href="book.thumbnail"><img :src="book.thumbnail"/></a>
+                <!-- </div> -->
             </section>
             <book-review-form @addReview="onAddReview"></book-review-form>
         </section>
