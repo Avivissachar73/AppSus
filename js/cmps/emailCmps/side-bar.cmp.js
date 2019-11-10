@@ -10,8 +10,8 @@ export default {
     template: `
     <section class="email-side-bar flex column">
         <ul class=" clean-list list-side-bar">
-            <li :class="{ showing: this.isShowingInbox}"  @click="showInbox"><router-link to="/misterEmail/list">Inbox</router-link></li>
-            <li><router-link to="/misterEmail/compose">Send email</router-link></li>
+            <li><router-link to="/misterEmail/compose"> &#9998; compose</router-link></li>
+            <li :class="{ showing: this.isShowingInbox}"  @click="showInbox"><router-link to="/misterEmail/list"> &#9993;Inbox</router-link></li>
           
             <li :class="{ showing: this.isShowingStars}" @click="showStars" ><router-link to="/misterEmail/list">starred</router-link></li>
             <!-- <li>sent-mail</li> -->
@@ -19,7 +19,8 @@ export default {
             <li :class="{ showing: this.isShowingUnread}" @click="showUnRead"><router-link to="/misterEmail/list">unread({{unReadCount}})</router-link></li>
         </ul>
                 <div class="bar">
-                <div class="precent" :style="{width:unreadPrecent+'%'}"> {{unreadPrecent}}%</div>
+                    
+                <div class="precent" :style="{width:unreadPrecent+'%'}"> {{unreadPrecent}}% unread emails</div>
                 </div>
     </section>
     `, 
