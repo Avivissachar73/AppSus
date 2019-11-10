@@ -48,7 +48,7 @@ export default {
                 </div>
             </section>
 
-            <section  v-if="note" :style="note.style" class="note-edit-modal flex align-center justify-center">
+            <section  v-if="note" :style="note.style" class="note-edit-modal flex column align-center justify-center">
                 <button class="close-modal-button" @click="onClose">&#10005;</button>
 
                 <form @submit.prevent="onSaveNote" class="note-edit-form flex column flex-start">
@@ -65,25 +65,43 @@ export default {
                     <div v-if="note.type === 'mapNote'">
                         <map-note :note="note" class="note-data"></map-note>
                     </div>
+                    <button>Save</button>
+                </form>
                     
-                    <div class="new-note-styling flex column align-center">
-                        <div class="color-palate-container flex column">
-                            <div v-for="(colors, key) in colorPalate" class="flex column">
-                                <h5>{{key}}</h5>
-                                <div class="color-palate flex space-between margin-bottom-5px">
-                                    <div v-for="(color, idx) in colors" class="flex margin-bottom-5px">
-                                        <label class="palate-color" :class="{'selected-color': color === note.style[key]}" :for="key+idx" :style="{'background-color': color}"></label>
-                                        <input type="radio" :id="key+idx" :value="color" v-model="note.style[key]"/>
-                                    </div>
+                <div class="new-note-styling flex column align-center width-all">
+                    <div class="color-palate-container flex column align-center">
+                        <div v-for="(colors, key) in colorPalate" class="flex column align-center space-around width-all">
+                            <h5>{{key}}</h5>
+                            <div class="color-palate flex space-between width-all">
+                                <div v-for="(color, idx) in colors" class="flex colors">
+                                    <label class="palate-color" :class="{'selected-color': color === note.style[key]}" :for="key+idx" :style="{'background-color': color}"></label>
+                                    <input type="radio" :id="key+idx" :value="color" v-model="note.style[key]"/>
                                 </div>
                             </div>
                         </div>
                         <button class="edit-color-palate-btn" @click.prevent.stop="onToggleEditPalate">Edit Colors</button>
-                        
                         <note-palate-edit v-if="isEditColorPalate" @saveColorPalate="onToggleEditPalate(true)" @closeColorPalate="onToggleEditPalate"></note-palate-edit>
                     </div>
-                    <button>Save</button>
-                </form>
+                    <div class="flex align-center space around wrap width-all">
+                        font:
+                        <select v-model="note.style['font-family']" placeholder="font">
+                            <option :value="'Arial'" label="Arial"/>
+                            <option :value="'Nanum Gothic'" label="Nanum Gothic"/>
+                            <option :value="'sans-serif'" label="sans-serif"/>
+                        </select>
+                        <!-- <input type="text" list="fontFamily" v-model="note.style['font-family']" placeholder="font"/>
+                        <datalist id="fontFamily">
+                            <option :value="'Arial'" label="Arial"/>
+                            <option :value="'Nanum Gothic'" label="Nanum Gothic"/>
+                            <option :value="'sans-serif'" label="sans-serif"/>
+                        </datalist> -->
+                        style:
+                        <select v-model="note.style['font-style']" placeholder="style">
+                            <option :value="'italic'" label="italic"/>
+                            <option :value="'normal'" label="normal"/>
+                        </select>
+                    </div>
+                </div>
             </section>
         </section>
     `,

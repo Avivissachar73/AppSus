@@ -71,8 +71,9 @@
     background-color: unset;
     font-size: 1.3rem;
     text-align: center;
-}.add-note-radios button:hover {
-    background-color: rgba(121, 228, 148, 0.5);
+}
+.add-note-radios button:hover {
+    /* background-color: rgba(121, 228, 148, 0.5); */
 }
 
 .note-edit-modal {
@@ -210,6 +211,10 @@
     max-width: 100%;
     max-height: 100%;
     /* over */
+}
+
+.colors  {
+    margin-top: 5px;
 }
 
 #googleMap div {

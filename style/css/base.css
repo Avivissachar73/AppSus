@@ -24,7 +24,9 @@ button {
 }
 button:hover {
     cursor: pointer;
-    background-color: rgba(136, 245, 163, 0.5);
+    /* background-color: rgba(136, 245, 163, 0.5); */
+    color: rgb(124, 43, 43);
+    border-color: rgb(124, 43, 43);
 }
 
 input, textarea {
