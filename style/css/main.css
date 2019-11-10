@@ -1,3 +1,4 @@
+@import './fonts.css';
 @import './base.css';
 @import './home.css';
 @import './helpers.css';
@@ -6,8 +7,10 @@
 @import './miss-books.css';
 @import './alert.css';
 
-body {
-    /* background: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0%, rgba(122, 250, 2, 0.5) 100%); */
+
+.logo {
+    font-family: Nunito;
+    font-weight: 200;
 }
 
 main > header {
@@ -15,7 +18,6 @@ main > header {
     top: 0;
     right: 0;
     border-bottom: 1px solid rgba(61, 57, 57, 0.3);
-    /* background-color: rgba(73, 252, 73, 0.6); */
     background-color: #9aef9a;
     box-shadow: inset 0px 0px 10px -7px rgba(0,0,0,0.75);
     width: 100%;
@@ -24,10 +26,11 @@ main > header {
 }
 
 main > footer {
-    background-color: rgba(190, 186, 186, 0.5);
+    /* background-color: rgba(190, 186, 186, 0.5); */
+    background-color: #c5ecc5;
     border-top: 1px solid rgba(61, 57, 57, 0.3);
     box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.75);
-    height: 33.3333vh;
+    height: 10vh;
 }
 
 header .container {
@@ -39,7 +42,11 @@ header .container {
 }
 
 
-.router-link-exact-active {
+main > header .router-link-exact-active {
+    color: rgb(241, 93, 93);
+}
+
+main > header li:hover {
     color: rgb(241, 93, 93);
 }
 
@@ -49,7 +56,7 @@ header .container {
 
 .router-preview {
     background: linear-gradient(45deg, rgba(255, 255, 255, 0.5) 0%, rgba(89, 223, 129, 0.5) 100%);
-    min-height: 90vh;
+    min-height: 80vh;
     border-right: 1px solid rgba(192, 180, 180, 0.3);
     border-left: 1px solid rgba(192, 180, 180, 0.3);
     margin-top: 10vh;

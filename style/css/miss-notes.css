@@ -19,17 +19,13 @@
     margin: 10px;
     padding: 10px;
     width: 100%;
+    z-index: 999;
 }
 
 .note-preview > * {
     width: 100%;
     margin-bottom: 10px;
 }
-
-.note-data {
-    width: 95%;
-}
-
 
 
 .done-todo {
@@ -44,7 +40,7 @@
 }
 
 .notes-keep-app button {
-    background-color: rgba(223, 210, 210, 0.3);
+    /* background-color: rgba(223, 210, 210, 0.3); */
 }
 
 
@@ -75,6 +71,8 @@
     background-color: unset;
     font-size: 1.3rem;
     text-align: center;
+}.add-note-radios button:hover {
+    background-color: rgba(121, 228, 148, 0.5);
 }
 
 .note-edit-modal {
@@ -149,11 +147,11 @@
     transform: scale(1.2);
 }
 
-.edit-color-palate-btn {
+.edit-color-palate-btn, .map-search-btn {
     border-radius: 0;
     background: none !important;
     border: none;
-    font-size: 1rem;
+    font-size: 0.75rem;
     border-bottom: 1px solid black;
 }
 
@@ -193,6 +191,28 @@
     margin-bottom: 10px;
 }
 
+.note-data > * {
+    margin-bottom: 5px;
+}
+
+.todo-list li {
+    margin-bottom: 5px;
+}
+
+.todo-list li > *:first-child {
+    margin-right: 5px;
+}
+
+.map-container {
+    /* position: relative; */
+    max-width: 100%;
+    max-height: 100%;
+    /* over */
+}
+
+.google-map {
+    /* z-index: -1; */
+}
 
 @media (max-width: 1100px) {
     .note-list {

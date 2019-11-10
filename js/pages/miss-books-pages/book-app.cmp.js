@@ -11,19 +11,17 @@ import bookFilter from '../../cmps/miss-books-cmps/book-filter.cmp.js';
 export default {
     name: 'book-app',
     template: `
-        <main>
-            <section v-if="!selectedBook">
-                <router-link to="/books/add">add books</router-link>
+        <section class="book-section">
+            <header class="flex space-between wrap width-all">
+                <button><router-link to="/books/add">add books</router-link></button>
                 <book-filter @getFilterBy="setFilterBy" :categories="categories"></book-filter>
-                <book-list :books="booksToShow" @bookSelected="selectBook"></book-list>
-            </section>
-            <book-details v-else :book="selectedBook" @bookDisSelect="selectBook"></book-details> 
-        </main>
+            </header>
+            <book-list :books="booksToShow"></book-list>
+        </section>
     `,
     data() {
         return {
             books: [],
-            selectedBook: null,
             filterBy: null,
         }
     },
@@ -49,14 +47,6 @@ export default {
         }
     },
     methods: {
-        selectBook(bookId) {
-            if (!bookId) {
-                this.selectedBook = null;
-                return
-            }
-            booksService.getBookById(bookId)
-                .then(book => this.selectedBook = book);
-        },
         setFilterBy(filterBy) {
             this.filterBy = filterBy;
         }

@@ -471,14 +471,14 @@ getBooks().then(someBooks => gBooks = someBooks);
 function addApiBook(id) {
   var book = gApiBooks.find(book => book.id === id);
   gBooks.unshift(book);
-  saveBooksToStorage();  
+  // console.log('book added successfully', book)
+  return saveBooksToStorage();  
 
-  console.log('book added successfully', book)
-  return book;
+  // return book;
 }
 
 function saveBooksToStorage() {
-  utils.saveToLocalStorage(BOOKS_STORAGE_KEY, gBooks);
+  return utils.saveToLocalStorage(BOOKS_STORAGE_KEY, gBooks);
 }
 
 function getGoogleBooks(searchStr) {

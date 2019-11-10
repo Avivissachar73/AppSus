@@ -40,14 +40,6 @@
     color: green;
 }
 
-/* .book-review { */
-    /* background-color: ; */
-/* } */
-
-.shorted-txt:hover {
-    /* cursor: pointer; */
-}
-
 .user-msg {
     background-color: aquamarine;
     border: 5px solid brown;
@@ -61,4 +53,12 @@
 }
 .user-msg > * {
     text-align: center;
+}
+
+.book-section {
+    padding: 10px;
+}
+
+.book-filter-container > * {
+    margin: 5px;
 }

@@ -11,7 +11,7 @@ import {eventBus} from '../../services/event-bus-service.js'
 export default {
     name: 'book-details',
     template: `
-        <section class="book-details-preview" v-if="book">
+        <section class="book-details-preview book-section" v-if="book">
             <button @click="getDiffBook(-1)">Prev book</button>
             <button @click="getDiffBook(1)">Next book</button>
             <section class="book-info flex column align-center justify-center">

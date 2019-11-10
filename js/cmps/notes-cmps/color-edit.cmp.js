@@ -8,7 +8,6 @@ export default {
     name: 'color-palate-edit',
     template: `
         <section class="flex column align-center justify-center colors-edit-modal">
-            <button @click="onClose">&#10005;</button>
             <h3>Choose your colors</h3>
             <div v-for="(colors, key) in colorPalate" class="color-palate-container flex column">
                 <h5>{{key}}</h5> 
@@ -17,7 +16,10 @@ export default {
                     <label class="palate-color" v-for="(color, idx) in colorPalate[key]" :for="'editColorInput'+key" @click="onSetCurrColorIdx(idx)" :style="{'background-color': color}"></label>
                 </div>
             </div>
-            <button @click="onSaveColorPalate">Save changes</button>
+            <div class="flex space-around width-all">
+                <button @click="onSaveColorPalate">Save</button>
+                <button @click="onClose">&#10005;</button>
+            </div>
         </section>
     `,
     data() {

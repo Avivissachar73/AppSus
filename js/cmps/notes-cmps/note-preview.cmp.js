@@ -1,123 +1,21 @@
 'use strict';
 
 import notesService from '../../services/miss-keep-services/notes-service.js';
-import mapService from '../../services/miss-keep-services/map-service.js';
+// import mapService from '../../services/miss-keep-services/map-service.js';
 
 import {mailsService} from '../../services/email-services.js';
 
 import {eventBus} from '../../services/event-bus-service.js';
 
-import shortedTxt from './short-txt.cmp.js';
+// import shortedTxt from './short-txt.cmp.js';
 
-var textNote = {
-    name: 'textNote',
-    props: ['note'],
-    template: `
-        <shorted-txt :txt="note.txt" :txtLimit="150"></shorted-txt>
-    `,
-    components: {
-        shortedTxt
-    }
-}
+import textNote from './note-preview-cmps/text-note.cmp.js';
+import audioNote from './note-preview-cmps/audio-note.cmp.js';
+import videoNote from './note-preview-cmps/video-note.cmp.js';
+import imageNote from './note-preview-cmps/image-note.cmp.js';
+import todoNote from './note-preview-cmps/todo-note.cmp.js';
+import mapNote from './note-preview-cmps/map-note.cmp.js';
 
-var audioNote = {
-    name: 'audioNote',
-    props: ['note'],
-    template: `
-        <!-- <audio controls :src="note.url" controls="controls"/> -->
-        <audio controls>
-            <source :src="note.url" type="audio/mpeg"/>
-        </audio>
-    `,
-}
-
-var videoNote = {
-    name: 'videoNote',
-    props: ['note'],
-    template: `
-        <iframe :src="note.url"/>
-    `,
-}
-
-var imageNote = {
-    name: 'imageNote',
-    props: ['note'],
-    template: `
-        <img :src="note.url"/>
-    `,
-}
-
-var todoNote = {
-    name: 'todoNote',
-    props: ['note'],
-    template: `
-        <div>
-            <form @submit.prevent="onAddTodo" class="flex space-between width-all">
-                <input type="text" placeholder="Add todo" v-model="newTodoTxt"/>
-                <button>+</button>
-            </form>
-            <ul class="clean-list width-all">
-                <li v-for="todo in note.todos" :key="todo.id" class="flex align-center width-all" @click="onMarkTodo(todo.id)">
-                    <button @click.stop="onRemoveTodo(todo.id)">X</button>
-                    <div :class="{'done-todo': todo.isDone}">{{todo.txt}}</div>
-                </li>
-            </ul>
-        </div>
-    `,
-    data() {
-        return {
-            newTodoTxt: ''
-        }
-    },
-    methods: {
-        onRemoveTodo(todoId) {
-            notesService.removeTodo(this.note.id, todoId)
-                .then(() => console.log('todo was removed successfully'));
-        },
-        onMarkTodo(todoId) {
-            notesService.markTodo(this.note.id, todoId)
-                .then(() => console.log('todo was toggled!'))
-        },
-        onAddTodo() {
-            if (!this.newTodoTxt) return;
-            notesService.addTodo(this.note.id, this.newTodoTxt);
-            this.newTodoTxt = '';
-        },
-    },
-    watch: {
-        // newTodoTxt(currVall) {
-        //     if (currVall.length > 20) {
-        //         this.newTodoTxt = this.newTodoTxt.slice(0, 20);
-        //     }
-        // }
-    }
-}
-
-var mapNote = {
-    name: 'map-note',
-    props: ['note'],
-    template: `
-        <div hidden ref="googleMap" style="height: 250px; overflow: hidden;"></div>
-    `,
-    data() {
-        return {
-            map: {},
-            marker: null
-        }
-    },
-    methods: {
-        setMap() {
-            mapService.initMap(this.$refs.googleMap, this.note.pos.lat, this.note.pos.lng)
-                .then(map => {
-                    this.map = map;
-                    this.marker = mapService.addMarker(this.map, this.map.center);
-                })
-        }
-    },
-    mounted() {
-        this.setMap();
-    },
-}
 
 export default {
     name: 'note-Preview',

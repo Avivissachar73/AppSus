@@ -5,19 +5,16 @@ export default {
     initMap,
     addMarker,
     getCoordJsonByStr,
-    // currPos,
-    // getCurrLoc
+    connectGoogleApi,
+    createGeocodeAPI
 }
 
-var isMapScript = false;
 
-
-const API_KEY = 'AIzaSyClJEGatJZ5nsl0wqdDZ3KLGNHKVUsY9WA'; //TODO: Enter your API Key
-// _connectGoogleApi()
+const API_KEY = 'AIzaSyClJEGatJZ5nsl0wqdDZ3KLGNHKVUsY9WA';
 
 export var currPos = {lat: 31.768319, lng: 35.21371};
 getCurrLoc();
-// console.log(getCurrLoc())
+
 function getCurrLoc() {
     navigator.geolocation.getCurrentPosition(
         loc => {currPos.lat = loc.coords.latitude; currPos.lng = loc.coords.longitude;})
@@ -33,33 +30,20 @@ function addMarker(map, loc) {
 }
 
 function initMap(element, lat = 32.0749831, lng = 34.9120554) {
-    // if (!isMapScript) {
-    //     return _connectGoogleApi()
-    //         .then(() => {
-    //             return new google.maps.Map(
-    //                 element, {
-    //                     center: {lat, lng},
-    //                     zoom: 15
-    //                 });
-    //         })
-    // } else {
-        return new Promise((resolve, reject) => {
-            resolve(new google.maps.Map(
-                element, {
-                    center: {lat, lng},
-                    zoom: 20
-                }))})
-    // }
+    return new Promise((resolve, reject) => {
+        resolve(new google.maps.Map(
+            element, {
+                center: {lat, lng},
+                zoom: 15
+        }))})
 }
 
-function _connectGoogleApi() {
+function connectGoogleApi() {
     if (window.google) return Promise.resolve()
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
     document.body.append(elGoogleApi);
-
-    isMapScript = true;
 
     return new Promise((resolve, reject) => {
         elGoogleApi.onload = resolve;

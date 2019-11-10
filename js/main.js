@@ -1,6 +1,7 @@
 'use strict';
 
 import router from './router.js';
+import confirmAlert from './cmps/alert.cmp.js';
 
 
 var options = {
@@ -8,9 +9,10 @@ var options = {
     el: '#appSus',
     template: `
         <main>
+            <confirm-alert></confirm-alert>
             <header class="flex align-center">
                 <section class="container flex align-center space-between">
-                    <h1>App Sus</h1>
+                    <h1 class="logo">App Sus</h1>
                     <button @click="onToggleNav" class="main-nav-button">&#9783;</button>
                     <ul ref="mainNav" class="main-nav-bar clean-list flex wrap space-around">
                         <li @click="onToggleNav"><router-link to="/">Home</router-link></li>
@@ -31,6 +33,9 @@ var options = {
         onToggleNav() {
             this.$refs.mainNav.classList.toggle('open')
         }
+    },
+    components: {
+        confirmAlert
     }
 };
 

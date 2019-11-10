@@ -80,7 +80,10 @@ function getNewNote(noteType) {
         noteType === 'imageNote') newNote.url = '';
     if (noteType === 'todoNote') newNote.todos = [];
     // if (noteType === 'mapNote') newNote.pos = {lat: 0, lng: 0};
-    if (noteType === 'mapNote') newNote.pos = currPos;
+    if (noteType === 'mapNote') {
+        newNote.pos = {...currPos};
+        newNote.searchStr = 'Jerusalem';
+    }
     
     return Promise.resolve(newNote);
 }

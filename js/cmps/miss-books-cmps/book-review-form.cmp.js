@@ -16,19 +16,24 @@ export default {
                     <option value="4" label="4"/>
                     <option value="5" label="5"/>
                 </select>
-                read at: <input type="date" value="" v-model="newReview.readAt">
+                read at: <input ref="readAt" type="date" :value="today">
                 <button>Add review</button>
             </form>
         </section>
     `,
     data() {
         return {
-            readAt: Date.call().split(' ').splice(1,3).join(' '),
-            newReview: {id: Date.now(), reviewer: '', txt: '', readAt, rate: 3}
+            newReview: {id: Date.now(), reviewer: '', txt: '', readAt: this.today, rate: 3}
+        }
+    },
+    computed: {
+        today() {
+            return (new Date().getUTCFullYear())+'-'+(new Date().getDate())+'-'+(new Date().getMonth()+1)
         }
     },
     methods: {
         onAddReview() {
+            this.newReview.readAt = this.$refs.readAt.value
             if (!this.newReview.reviewer || !this.newReview.txt) return;
             this.$emit('addReview', this.newReview);
         }

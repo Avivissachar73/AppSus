@@ -4,7 +4,7 @@ export default {
     name: 'book-filter',
     props: ['categories'],
     template: `
-        <section class="flex space-around align-center wrap">
+        <section class="book-filter-container flex space-around align-center wrap">
             <div class="flex column">
                 <label for="searchName">Search by name: </label>
                 <input id="searchName" type="text" placeholder="Search by name" v-model="filterBy.title" @input="onSetFilter"/>

@@ -2,97 +2,25 @@
 
 import notesService from '../../services/miss-keep-services/notes-service.js';
 
-import mapService from '../../services/miss-keep-services/map-service.js';
-
 import notePalateEdit from '../notes-cmps/color-edit.cmp.js';
 
 import {eventBus} from '../../services/event-bus-service.js';
 
-var mapNote = {
-    name: 'map-note',
-    props: ['note'],
-    template: `
-        <section>  
-            <form @submit.prevent="onSearchMap">
-                <input type="text" placeholder="Search a place" v-model="mapSearchStr"/>
-                <button>Search</button>
-            </form>
-            <div ref="googleMap" style="height: 200px"></div>
-        </section>
-    `,
-    data() {
-        return {
-            mapSearchStr: '',
-            map: {},
-            marker: null
-        }
-    },
-    methods: {
-        setMap() {
-            if (this.note.type === 'mapNote') {
-                mapService.initMap(this.$refs.googleMap, this.note.pos.lat, this.note.pos.lng)
-                    .then(map => {
-                        this.map = map;
-                        this.marker = mapService.addMarker(this.map, this.map.center);
-                    })
-            }
-        },
-        onSearchMap() {
-            mapService.getCoordJsonByStr(this.mapSearchStr)
-                .then(data => {
-                    this.note.pos = data.results[0].geometry.location;
-                    console.log(this.note.pos)
-                    var laLatLng = new google.maps.LatLng(this.note.pos.lat, this.note.pos.lng);
-                    this.map.panTo(laLatLng);
-                    this.marker = mapService.addMarker(this.map, this.map.center);
-                })
-        }
-    },
-    mounted() {
-        this.setMap()
-    }
-}
-
-var todoNote = {
-    name: 'todo-note',
-    props: ['note'],
-    template: `
-        <section>
-            <form @submit.prevent.stop="onAddTodo" class="flex">
-                <input type="text" placeholder="Add todo" v-model="newTodoTxt"/>
-                <button>+</button>
-            </form>
-            <ul class="clean-list">
-                <li v-for="(todo, idx) in note.todos">
-                    <button @click.stop.prevent="onRemoveTodo(idx)">X</button>
-                    {{todo.txt}}
-                </li>
-            </ul>
-        </section>
-    `,
-    data() {
-        return {
-            newTodoTxt: '',
-        }
-    },
-    methods: {
-        onAddTodo() {
-            this.note.todos.unshift(notesService.createTodo(this.newTodoTxt));
-            this.newTodoTxt = '';
-        },
-        onRemoveTodo(idx) {
-            this.note.todos.splice(idx, 1);
-        },
-    }
-}
+import mapNote from './note-edit-cmps/map-note-edit.cmp.js';
+import todoNote from './note-edit-cmps/todo-note-edit.cmp.js';
 
 export default {
     name: 'edit-note',
     template: `
         <section>
             <section class="add-note-container">
-                <!-- <h4>Add:</h4> -->
                 <div class="add-note-radios flex align-center space-around wrap">
+                    <div v-for="item in radioButtons"  class="flex">
+                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" :for="item.val">{{item.txt}}</label></button>
+                        <input :id="item.val" type="radio" :value="item.val" v-model="type"/>
+                    </div>
+                </div>
+                <!-- <div class="add-note-radios flex align-center space-around wrap">
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="textRadio">&tcaron;</label></button>
                         <input id="textRadio" type="radio" value="textNote" v-model="type"/>
@@ -117,12 +45,11 @@ export default {
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="mapRadio">&#9906;</label></button>
                         <input id="mapRadio" type="radio" value="mapNote" v-model="type"/>
                     </div>
-                </div>
+                </div> -->
             </section>
 
-            <section  v-if="noteId || type" :style="note.style" class="note-edit-modal flex align-center justify-center">
-            <!-- <section  v-if="note" :style="note.style" class="note-edit-modal flex align-center justify-center"> -->
-                <button class="close-modal-button" @click="onCloseEdit">&#10005;</button>
+            <section  v-if="note" :style="note.style" class="note-edit-modal flex align-center justify-center">
+                <button class="close-modal-button" @click="onClose">&#10005;</button>
 
                 <form @submit.prevent="onSaveNote" class="note-edit-form flex column flex-start">
                     <h3>{{title}}</h3>
@@ -132,11 +59,11 @@ export default {
                     <input v-if="urlCondition" type="text" placeholder="url" v-model="note.url"/>
                     
                     <div v-if="note.type === 'todoNote'">
-                        <todo-note :note="note"></todo-note>
+                        <todo-note :note="note" class="note-data"></todo-note>
                     </div>
 
                     <div v-if="note.type === 'mapNote'">
-                        <map-note :note="note"></map-note>
+                        <map-note :note="note" class="note-data"></map-note>
                     </div>
                     
                     <div class="new-note-styling flex column align-center">
@@ -167,6 +94,9 @@ export default {
             noteId: '',
             isEditColorPalate: false,
             colorPalate: null,
+            // radioButtons: [{val: 'textNote', txt: '&tcaron;'},{val: 'imageNote', txt: '&#10064;'},{val: 'videoNote', txt: '▷'},{val: 'audioNote', txt: '&#9833;'},{val: 'todoNote', txt: '&#9776;'},{val: 'mapNote', txt: '&#9906;'}]
+            radioButtons: [{val: 'textNote', txt: 'T'},{val: 'imageNote', txt: 'I'},{val: 'videoNote', txt: '▷'},{val: 'audioNote', txt: 'A'},{val: 'todoNote', txt: 'D'},{val: 'mapNote', txt: 'M'}]
+
         }
     },
     computed: {
@@ -211,18 +141,21 @@ export default {
                 .then(() => {
                     console.log('note was saved successfullyS');
                     this.$emit('noteChanged');
-                    this.onCloseEdit();
+                    this.onClose();
                 })
         },
         onSaveNote() {
-            if (!this.note.title) return;
+            if (!this.note.title) {
+                eventBus.$emit('Alert', 'You need to enter a title to your note.')
+                return;
+            }
             eventBus.$emit('Confirm', 'Confirm changes', this.saveNote);
         },
-        onCloseEdit() {
+        onClose() {
             this.noteId = '';
             this.type = '';
-            this.note = null;
             this.isEditColorPalate = false;
+            this.note = null;
         },
         getColorPalate() {
             notesService.getColorPalate()
@@ -245,16 +178,12 @@ export default {
         })
         this.getColorPalate();
     },
-    mounted() {
-    },
     watch: {
         type() {
-            this.getNote()
-                // .then(() => this.setMap())
-            },
+            if (this.type) this.getNote()
+        },
         noteId() {
-            this.getNote()
-                // .then(() => this.setMap())
+            if (this.noteId) this.getNote()
         },
     },
     components: {
