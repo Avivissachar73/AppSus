@@ -55,7 +55,6 @@ export default {
         booksService.getBooks()
             .then(books => {
                 this.books = books;
-                console.log(this.books)
             })
     },
     components: {

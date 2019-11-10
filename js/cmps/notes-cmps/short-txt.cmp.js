@@ -9,11 +9,11 @@ export default {
             <div v-else class="shorted-txt">
                 <p v-if="!isShowAllTxt">
                     {{shortedTxt}}
-                    <button @click="onReadMore">{{buttonMsg}}</button>
+                    <button class="short-txt-btn" @click="onReadMore">{{buttonMsg}}</button>
                 </p>
                 <p v-else>
                     {{txt}}
-                    <button @click="onReadMore">{{buttonMsg}}</button>
+                    <button class="short-txt-btn" @click="onReadMore">{{buttonMsg}}</button>
                 </p>
             </div>
         </section>

@@ -44,7 +44,6 @@ export default {
         }
     },
     created() {
-        console.log('alert was loded')
         eventBus.$on('Confirm', (msg, cbFunc) => {
             this.isConfirm = true;
             this.msgTxt = msg;

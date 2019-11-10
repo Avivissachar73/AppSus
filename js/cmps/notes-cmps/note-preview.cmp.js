@@ -47,8 +47,7 @@ export default {
             notesService.pinNote(this.note.id);
         },
         removeNote() {
-            notesService.removeNote(this.note.id)
-                .then(() => console.log('note has been removed successfully'))
+            notesService.removeNote(this.note.id);
         },
         onRemoveNote() {
             eventBus.$emit('Confirm', 'Are you sure you want to remove tis note? you wold not be able to restore it.', this.removeNote);
@@ -57,7 +56,6 @@ export default {
             eventBus.$emit('editNote', this.note.id);
         },
         onSendNote() {
-            console.log('sending', this.note);
             mailsService.addMail({title: this.note.title, 
                                  subtitle: this.note.txt, 
                                  from: 'Notes'});

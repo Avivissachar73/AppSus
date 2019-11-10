@@ -30,14 +30,12 @@ export default {
         setBooks() {
             booksService.getGoogleBooks(this.searchStr)
                 .then(books => {
-                    this.books = books
-                    // console.log(this.books);  
+                    this.books = books;
                 })
         },
         onAddBook(bookId) {
             booksService.addApiBook(bookId)
                 .then(() => {
-                    // console.log('book added')
                     eventBus.$emit('Alert', 'Book was added successfully')
                 });
         },
