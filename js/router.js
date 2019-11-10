@@ -10,9 +10,9 @@ import addBook from './pages/miss-books-pages/add-book.cmp.js';
 import missKeep from './pages/missKeep.cmp.js';
 
 import misterEmail from './pages/misterEmail.cmp.js';
-import compose from './emailCmps/compose.cmp.js';
-import list from './emailCmps/email-list.cmp.js'
-import details from './emailCmps/email-details.cmp.js'
+import compose from './cmps/emailCmps/compose.cmp.js';
+import list from './cmps/emailCmps/email-list.cmp.js'
+import details from './cmps/emailCmps/email-details.cmp.js'
 
 
 const routes = [

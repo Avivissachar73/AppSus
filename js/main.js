@@ -17,7 +17,7 @@ var options = {
                     <ul ref="mainNav" class="main-nav-bar clean-list flex wrap space-around">
                         <li @click="onToggleNav"><router-link to="/">Home</router-link></li>
                         <li @click="onToggleNav"><router-link to="/books">MissBooks</router-link></li>
-                        <li @click="onToggleNav"><router-link to="/misterEmail">MisterEmail</router-link></li>
+                        <li @click="onToggleNav"><router-link to="/misterEmail/list">MisterEmail</router-link></li>
                         <li @click="onToggleNav"><router-link to="/missKeep">MissKeep</router-link></li>
                     </ul>
                 </section>

@@ -1,6 +1,6 @@
 .email-preview{
     /* height: 50px; */
-    background-color: rgba(230, 221, 210, 0.767);
+    background-color: rgba(223, 230, 213, 0.637);
     border-bottom: rgba(92, 92, 92, 0.842) 1px solid;
     padding: 15px;
 }
@@ -18,14 +18,17 @@
     background: rgba(238, 207, 161, 0.26);
 }
 .email-side-bar li {
-    padding: 30px;
+    padding: 20px;
 }
-.email-side-bar :hover{
-    background-color: rgba(250, 246, 3, 0.171);
+.email-side-bar li :hover{
+    background-color: rgba(250, 151, 3, 0.5);
+    transition: 0.3s;
+    border-radius: 15%;
 }
 .email-list{
     width: 100%;
-    background-image: url('/img/background2.jpg');
+    /* background-image: url('/img/background2.jpg'); */
+    background-color: none;
 }
 .sub-title-perview{
     background-color:rgba(247, 229, 202, 0.247) ;
@@ -34,8 +37,8 @@
     font-size: 14px;
 }
 .unReadMail{
-    font-weight: 600;
-    background-color: rgba(230, 221, 210, 0.185);
+    font-weight: 780;
+    background-color: rgba(240, 255, 224, 0.753);
 }
 .compose{
     display: flex;
@@ -54,5 +57,85 @@
     background-color:rgb(245, 245, 245);
 }
 .precent{
-    background-color: rgb(157, 197, 151);
+    background-color: rgb(197, 177, 151);
+}.search-bar{
+    border-bottom: 1px rgb(131, 130, 130) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.router-link-exact-active {
+   color: unset;
+}
+a{
+    color: black;
+}
+.search-icon{
+    height: 33px;
+    width: 33px;
+    /* background-image: url('/img/search2.jpg'); */
+    background-repeat: no-repeat;
+    background-size: 33px 33px;
+}
+.compose-input{
+    width: 100%;
+    background-color:unset;
+    border: unset;
+    border-bottom: rgb(5, 5, 5) 1px solid;
+}
+.list-side{
+    display: flex;
+}
+.list-side-bar{
+    display: flex;
+    flex-direction: column;
+}
+.mail-details{
+    max-width: 100%;
+}
+.stars{
+    font-size: 30px;
+}
+.yellow-stars{
+    font-size: 30px;
+    color: rgb(204, 204, 0);
+}
+
+@media (max-width:650px){
+    .list-side{
+        flex-direction: column;
+    }
+    .list-side-bar{
+       flex-direction:row ;
+    }
+    .email-side-bar{
+        width: 100%;
+        position: fixed;
+        margin-top: 50px;
+        background-color: rgb(216, 216, 216);
+    }
+    .email-side-bar li{
+        padding: 8px;
+    }
+    .email-list{
+       margin-top: 150px;
+    }
+    .search-bar{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        background-color: rgb(207, 207, 207);
+    }
+    .compose{
+        margin-top:150px ;
+    }
+    .mail-details{
+        margin-top: 150px;
+    }
+    
+
+    
 }

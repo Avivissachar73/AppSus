@@ -1,9 +1,9 @@
 'use strict'; 
 
 
-import { eventBus } from "../services/event-bus-service.js";
-import {mailsService} from '../services/email-services.js';
-import noteService from '../services/miss-keep-services/notes-service.js'
+import { eventBus } from "../../services/event-bus-service.js";
+import {mailsService} from '../../services/email-services.js';
+import noteService from '../../services/miss-keep-services/notes-service.js'
  import emailShortText from '../emailCmps/emailShortText.cmp.js'
 
 
@@ -24,14 +24,14 @@ export default {
                <div class="smallSize" >
                {{mail.time}}
                {{mail.date}}
-                <button @click.stop="starringMail" v-if="!mail.isStarred">✰</button>
-                <button @click.stop="starringMail" v-else>⭐</button>
+                <button class="stars" @click.stop="starringMail" v-if="!mail.isStarred">&star;</button>
+                <button class="yellow-stars" @click.stop="starringMail" v-else>&starf;</button>
                 
                 
                </div>
            </div>
                 <div class="sub-title-perview" v-if="selected">
-                <button @click="deleteMail">🗑️</button>
+                <button @click="onDeleteMail">🗑️</button>
                 <button @click="makeNote">n</button>
                 <router-link :to="'/misterEmail/details'+mail.id"> 📖</router-link>
                 <email-short-text :txtLimit="130" :txt="mail.subtitle"></email-short-text>
@@ -49,12 +49,16 @@ export default {
         }
     },
     methods:{
+        onDeleteMail(){
+            eventBus.$emit('Confirm','are you sure you to delete?',this.deleteMail)
+        },
         selectedPreview(){
             this.selected=!this.selected
             // this.mail.isread=true
             eventBus.$emit('read',this.mail.id)
         },
         deleteMail(){
+
              this.mail.trash=!this.mail.trash
             console.log(this.mail.id)
             eventBus.$emit('delete',this.mail.id)
