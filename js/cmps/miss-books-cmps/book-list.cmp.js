@@ -1,6 +1,6 @@
 'use strict';
 
-import utils from '../../services/util-service.js';
+import bookPreview from './book-preview.cmp.js';
 
 export default {
     props: ['books'],
@@ -19,23 +19,8 @@ export default {
         onSelectBook(bookId) {
             this.$emit('bookSelected', bookId);
         },
+    },
+    components: {
+        bookPreview
     }
 };
-
-Vue.component('book-preview', {
-    props: ['book'],
-    template: `
-        <div class="book-preview flex column align-center justify-center">
-            <h2>{{book.title}}</h2>
-            <img :src="book.thumbnail"/>
-            <h2>Price: {{book.listPrice.amount}}{{currencySign}}</h2>
-            <router-link :to="'/books/bookId' + book.id">Read more</router-link>
-        </div>
-    `,
-    computed: {
-        currencySign() {
-            let currencyCode = this.book.listPrice.currencyCode;
-            return utils.getCurrency(currencyCode);
-        }
-    }
-})

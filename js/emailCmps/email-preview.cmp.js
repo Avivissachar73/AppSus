@@ -3,7 +3,7 @@
 
 import { eventBus } from "../services/event-bus-service.js";
 import {mailsService} from '../services/email-services.js';
-import noteService from '../services/notes-service.js'
+import noteService from '../services/miss-keep-services/notes-service.js'
  import emailShortText from '../emailCmps/emailShortText.cmp.js'
 
 

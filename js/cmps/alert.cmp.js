@@ -8,14 +8,15 @@ export default {
         <section v-if="msgTxt" class="flex column align-center justify-center confirm-modal">
             <!-- <h3>{{title}}</h3> -->
             <p>{{msgTxt}}</p>
-            <div class="flex align-center space-between">
-                <button @click="confirmFunc">{{confirmMsg}}</button>
+            <div class="flex align-center space-around">
+                <button v-if="isConfirm" @click="confirmFunc">{{confirmMsg}}</button>
                 <button @click="onClose">{{closeMsg}}</button>
             </div>
         </section>
     `,
     data() {
         return {
+            isConfirm: false,
             title: '',
             msgTxt: '',
             cbFunc: null
@@ -26,7 +27,7 @@ export default {
             return 'Confirm';
         },
         closeMsg() {
-            return 'Cancel';
+            return (this.isConfirm)? 'Cancel' : 'Close';
         },
     },
     methods: {
@@ -39,14 +40,18 @@ export default {
         },
         onClose() {
             this.msgTxt = '';
+            this.isConfirm = false;
         }
     },
     created() {
         eventBus.$on('Confirm', (msg, cbFunc) => {
+            this.isConfirm = true;
             this.msgTxt = msg;
-            // this.cbFunc = cbFunc;
-            console.log(this.msgTxt)
             if (cbFunc) this.cbFunc = cbFunc;
+        });
+        eventBus.$on('Alert', (msg) => {
+            this.isConfirm = false;
+            this.msgTxt = msg;
         });
     }
 }

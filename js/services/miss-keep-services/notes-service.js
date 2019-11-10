@@ -1,7 +1,7 @@
 'use strict';
 
-import utils from './util-service.js';
-import {currPos} from './miss-keep-services/map-service.js';
+import utils from '../util-service.js';
+import {currPos} from './map-service.js';
 
 const NOTES_STOREGE_KEY = 'my_notes';
 

@@ -12,7 +12,8 @@
 }
 
 .note-preview {
-    background-color: rgba(73, 252, 73, 0.6);
+    /* background-color: rgba(73, 252, 73, 0.6); */
+    background-color: rgba(165, 248, 165, 0.6);
     box-shadow: 0px 0px 20px -7px rgba(0,0,0,0.75);
     border-radius: 3px;
     margin: 10px;
@@ -55,7 +56,7 @@
 
 .add-note-container {
     margin: 0 auto;
-    width: 300px;
+    /* width: 300px; */
 }
 .add-note-radios input[type="radio"] {
     position: absolute;
@@ -64,9 +65,10 @@
 .add-note-radios label {
     margin: 0 auto;
     text-align: center;
-    width: 100%;
+    /* width: 100%; */
 }
 .add-note-radios button {
+    margin-right: 15px;
     padding: 0;
     width: 30px;
     height: 30px;
@@ -100,7 +102,7 @@
 }
 
 .note-edit-form > *:not(button) {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     width: 100%;
 }
 
@@ -120,6 +122,7 @@
 .new-note-styling > * {
     margin-bottom: 10px;
 }
+
 .color-palate > * {
     margin-bottom: 10px;
 }
@@ -128,8 +131,8 @@
     width: 100%;
 }
 
-.margin-bottom-5px {
-    margin-bottom: 5px;
+.color-palate-container > * {
+    margin-bottom: 10px;
 }
 
 
@@ -170,20 +173,24 @@
 }
 
 .pinned-notes {
-    background-color: rgba(190, 186, 186, 0.5);
+    background-color: rgba(190, 186, 186, 0.3);
     box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.75);
 }
 
 .colors-edit-modal {
+    padding: 20px;
     position: fixed;
     background-color: #fff;
     border: 1px solid black;
     border-radius: 10px;
-    width: 250px;
-    height: 200px;
+    width: 270px;
+    /* height: 220px; */
     top: 15vh;
     right: 50%;
     transform: translate(50%, 0);
+}
+.colors-edit-modal > * {
+    margin-bottom: 10px;
 }
 
 
@@ -205,5 +212,11 @@
 @media (max-width: 530px) {
     .note-list {
         column-count: 1;
+    }
+}
+
+@media (max-width: 350px) {
+    .add-note-radios button {
+        margin-bottom: 15px;
     }
 }
