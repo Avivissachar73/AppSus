@@ -15,6 +15,7 @@ import videoNote from './note-preview-cmps/video-note.cmp.js';
 import imageNote from './note-preview-cmps/image-note.cmp.js';
 import todoNote from './note-preview-cmps/todo-note.cmp.js';
 import mapNote from './note-preview-cmps/map-note.cmp.js';
+// import mapNote from './note-edit-cmps/map-note-edit.cmp.js';
 
 
 export default {

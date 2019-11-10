@@ -63,7 +63,7 @@ export default {
                     </div>
 
                     <div v-if="note.type === 'mapNote'">
-                        <map-note :note="note" class="note-data"></map-note>
+                        <map-note :note="note" :isEdit="true" class="note-data"></map-note>
                     </div>
                     <button>Save</button>
                 </form>

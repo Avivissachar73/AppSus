@@ -4,10 +4,10 @@ import mapService from '../../../services/miss-keep-services/map-service.js';
 
 export default {
     name: 'map-note',
-    props: ['note'],
+    props: ['note', 'isEdit'],
     template: `
         <section class="flex column align-center justify-center width-all">  
-            <form @submit.prevent="onSearchMap">
+            <form v-if="isEdit" @submit.prevent="onSearchMap">
                 <input type="text" placeholder="Search a place" v-model="mapSearchStr"/>
                 <button class="map-search-btn">Search</button>
             </form>
