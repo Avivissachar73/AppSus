@@ -15,10 +15,10 @@ var options = {
                     <h1 class="logo">App Sus</h1>
                     <button @click="onToggleNav" class="main-nav-button">&#9783;</button>
                     <ul ref="mainNav" class="main-nav-bar clean-list flex wrap space-around">
-                        <li @click="onToggleNav"><router-link to="/">Home</router-link></li>
-                        <li @click="onToggleNav"><router-link to="/books">MissBooks</router-link></li>
-                        <li @click="onToggleNav"><router-link to="/misterEmail/list">MisterEmail</router-link></li>
-                        <li @click="onToggleNav"><router-link to="/missKeep">MissKeep</router-link></li>
+                        <li @click="onToggleNav"><router-link class="flex align-center justify-center" to="/">Home</router-link></li>
+                        <li @click="onToggleNav"><router-link class="flex align-center justify-center" to="/books">MissBooks</router-link></li>
+                        <li @click="onToggleNav"><router-link class="flex align-center justify-center" to="/misterEmail/list">MisterEmail</router-link></li>
+                        <li @click="onToggleNav"><router-link class="flex align-center justify-center" to="/missKeep">MissKeep</router-link></li>
                     </ul>
                 </section>
             </header>
