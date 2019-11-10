@@ -9,7 +9,7 @@ export default {
    
     template: `
     <section class="email-side-bar flex column">
-        <ul class=" clean-list list-side-bar">
+        <ul class=" clean-list list-side-bar flex wrap">
             <li><router-link to="/misterEmail/compose"> &#9998; compose</router-link></li>
             <li :class="{ showing: this.isShowingInbox}"  @click="showInbox"><router-link to="/misterEmail/list"> &#9993;Inbox</router-link></li>
           
