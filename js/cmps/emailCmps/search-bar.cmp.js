@@ -4,7 +4,7 @@ export default {
     template: `
         <section class="search-bar">
             <!-- <div class="search-icon"></div> -->
-            <input type="search" placeholder="Srearch in emails" v-model="filterBy.name" >
+            <input type="search" placeholder="Search in emails" v-model="filterBy.name" >
         </section>
     `,
     data(){
