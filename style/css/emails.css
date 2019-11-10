@@ -1,6 +1,6 @@
 .email-preview{
     /* height: 50px; */
-    background-color: rgba(230, 221, 210, 0.603);
+    background-color: rgba(230, 221, 210, 0.767);
     border-bottom: rgba(92, 92, 92, 0.842) 1px solid;
     padding: 15px;
 }
@@ -15,7 +15,7 @@
 .email-side-bar{
     width: 200px;
     padding: 20px;
-    background: rgb(238, 207, 161);
+    background: rgba(238, 207, 161, 0.26);
 }
 .email-side-bar li {
     padding: 30px;
@@ -25,6 +25,7 @@
 }
 .email-list{
     width: 100%;
+    background-image: url('/img/background2.jpg');
 }
 .sub-title-perview{
     background-color:rgba(247, 229, 202, 0.247) ;
@@ -50,8 +51,8 @@
     color: rgb(99, 96, 96);
 }
 .bar{
-    background-color:black;
+    background-color:rgb(245, 245, 245);
 }
 .precent{
-    background-color: blanchedalmond;
+    background-color: rgb(157, 197, 151);
 }
