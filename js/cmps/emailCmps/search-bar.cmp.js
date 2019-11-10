@@ -2,9 +2,9 @@
 export default {
     name: 'search-bar',
     template: `
-        <section>
-            search:
-            <input type="search" placeholder="Srearch by" v-model="filterBy.name" >
+        <section class="search-bar">
+            <!-- <div class="search-icon"></div> -->
+            <input type="search" placeholder="Srearch in emails" v-model="filterBy.name" >
         </section>
     `,
     data(){

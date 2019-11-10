@@ -1,7 +1,7 @@
 'use strict';
-import emailList from '../emailCmps/email-list.cmp.js'
-import sideBar from '../emailCmps/side-bar.cmp.js'
-import searchEmail from '../emailCmps/search-bar.cmp.js'
+import emailList from '../cmps/emailCmps/email-list.cmp.js'
+import sideBar from '../cmps/emailCmps/side-bar.cmp.js'
+import searchEmail from '../cmps/emailCmps/search-bar.cmp.js'
 import { eventBus } from "../services/event-bus-service.js"
 
 import {mailsService} from '../services/email-services.js'
@@ -10,7 +10,7 @@ export default {
     template: `
         <section>
             <search-email @filtered="setFilter"></search-email>
-            <div class="flex">
+            <div class="list-side">
             <side-bar :unreadPrecent="unreadPrecent" :unReadCount="unreadCount"></side-bar>
             <router-view :mails="mailsToShow"></router-view>
             
@@ -42,14 +42,20 @@ export default {
         // }
     },
     created(){
+        eventBus.$on('reply',(replyMail)=>{
+            // replyMail.title+=' Re :',
+            // replyMail.subtitle='----------------\n'+replyMail.subtitle
+
+            eventBus.$emit('replyToCompose',replyMail)
+        })
         eventBus.$on('starring',(mailId)=>{
             mailsService.starringEmail(mailId)
         })
-
+        
         eventBus.$on('read',(mailId)=>{
             mailsService.readMail(mailId)
         })
-
+        
         eventBus.$on('sendingNewMail',(newMail)=>{
             if(newMail.to===''||newMail.subtitle===''){return}
             mailsService.addMail(newMail)
@@ -66,10 +72,17 @@ export default {
         })
         eventBus.$on('delete', (mailId)=>{
             console.log(mailId,)
-           mailsService.deleteMail(mailId)
+            mailsService.deleteMail(mailId)
         })
         mailsService.getMails()
-            .then(mails=>this.mails=mails)
+        .then(mails=>this.mails=mails)
+
+        eventBus.$on('showInbox',()=>{
+            this.showTrash=false
+            this.showUnread=false
+            this.showStars=false
+           
+        })
     },
     computed:{
         unreadCount(){
