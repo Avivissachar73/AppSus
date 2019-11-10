@@ -49,7 +49,6 @@ export default {
             notesService.getNotes()
                 .then(notes => {
                     this.notes = notes;
-                    console.log(this.notes)
                 });
         },
         onSearch(filterBy) {

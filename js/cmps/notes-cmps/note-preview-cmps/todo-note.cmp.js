@@ -1,5 +1,7 @@
 'use strict';
 
+import notesService from '../../../services/miss-keep-services/notes-service.js';
+
 export default {
     name: 'todoNote',
     props: ['note'],
@@ -24,12 +26,10 @@ export default {
     },
     methods: {
         onRemoveTodo(todoId) {
-            notesService.removeTodo(this.note.id, todoId)
-                .then(() => console.log('todo was removed successfully'));
+            notesService.removeTodo(this.note.id, todoId);
         },
         onMarkTodo(todoId) {
-            notesService.markTodo(this.note.id, todoId)
-                .then(() => console.log('todo was toggled!'))
+            notesService.markTodo(this.note.id, todoId);
         },
         onAddTodo() {
             if (!this.newTodoTxt) return;

@@ -38,8 +38,8 @@ function getColorPalate() {
         })
         .catch(() => {
             return {
-                'background-color': ['#fff', '#000', '#e62117', '#17e65a', '#e6a017', '#065fd4'],
-                'color': ['#fff', '#000', '#e62117', '#17e65a', '#e6a017', '#065fd4']
+                'background-color': ['#fff', '#000', '#ffff00', '#ff7f50', '#90ee90', '#add8e6'],
+                color: ['#fff', '#000', '#ffff00', '#ff7f50', '#90ee90', '#add8e6']
             };
         })
 }
@@ -138,7 +138,6 @@ function getNotes() {
                 resolve(gNotes);
             })
             .catch(err => {
-                console.log(err);
                 gNotes = someNotes;
                 resolve(gNotes);
             })
@@ -162,7 +161,7 @@ var someNotes = [
         title: 'my note',
         txt: 'some note\nLorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, consequuntur distinctio est vitae optio, nihil assumenda fugit ad blanditiis nesciunt ducimus incidunt quo facilis aliquid obcaecati, quos corporis doloribus vero.',
         style: {
-            'background-color': '#000',
+            'background-color': '#676262',
             'font-family': 'Arial',
             'color': 'red',
             'font-style': 'italic',
@@ -200,9 +199,9 @@ var someNotes = [
         createdAt: Date.now(),
         type: 'audioNote',
         title: 'my audio',
-        url: 'https://www.youtube.com/embed/TO8hj4b6zOk',
+        url: 'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3',
         style: {
-            'background-color': 'lightgreen',
+            'background-color': 'lightblue',
             'font-family': '',
             'color': 'red'
         },
@@ -234,7 +233,7 @@ var someNotes = [
             },
         ],
         style: {
-            'background-color': 'lightgreen',
+            'background-color': 'yellow',
             'font-family': '',
             'color': 'red'
         },
@@ -246,8 +245,108 @@ var someNotes = [
         type: 'mapNote',
         title: 'my map',
         pos: {lat: 32.0749831, lng: 34.9120554},
+        searchStr: 'Jerusalem',
+        style: {
+            'background-color': 'coral',
+            'font-family': '',
+            'color': 'red'
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'textNote',
+        title: 'my note',
+        txt: 'some note\nLorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, consequuntur distinctio est vitae optio, nihil assumenda fugit ad blanditiis nesciunt ducimus incidunt quo facilis aliquid obcaecati, quos corporis doloribus vero.',
+        style: {
+            'background-color': '#676262',
+            'font-family': 'Arial',
+            'color': 'red',
+            'font-style': 'italic',
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'imageNote',
+        title: 'my image',
+        url: 'http://vignette1.wikia.nocookie.net/marveldatabase/images/a/a9/Spider-Man_Vol_1_1.jpg/revision/latest?cb=20080331205551',
+        style: {
+            'background-color': 'aqua',
+            'font-family': 'sans-serif',
+            'color': 'blue'
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'videoNote',
+        title: 'my video',
+        url: 'https://www.youtube.com/embed/otrH5hxJ2GE',
         style: {
             'background-color': 'lightgreen',
+            'font-family': '',
+            'color': 'red'
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'audioNote',
+        title: 'my audio',
+        url: 'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3',
+        style: {
+            'background-color': 'lightblue',
+            'font-family': '',
+            'color': 'red'
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'todoNote',
+        title: 'my todo',
+        todos: [
+            {
+                id: utils.getRandomId(),
+                createdAt: Date.now(),
+                txt: 'todlkjhgdotodo',
+                isDone: false
+            },
+            {
+                id: utils.getRandomId(),
+                createdAt: Date.now(),
+                txt: 'toLOREMdo',
+                isDone: false
+            },
+            {
+                id: utils.getRandomId(),
+                createdAt: Date.now(),
+                txt: 'todotodotodotodo',
+                isDone: false
+            },
+        ],
+        style: {
+            'background-color': 'yellow',
+            'font-family': '',
+            'color': 'red'
+        },
+        isPined: false
+    },
+    {
+        id: utils.getRandomId(),
+        createdAt: Date.now(),
+        type: 'mapNote',
+        title: 'my map',
+        pos: {lat: 32.0749831, lng: 34.9120554},
+        searchStr: 'Jerusalem',
+        style: {
+            'background-color': 'coral',
             'font-family': '',
             'color': 'red'
         },

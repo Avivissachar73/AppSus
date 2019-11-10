@@ -14,13 +14,13 @@ export default {
     template: `
         <section>
             <section class="add-note-container">
-                <div class="add-note-radios flex align-center space-around wrap">
+                <!-- <div class="add-note-radios flex align-center space-around wrap">
                     <div v-for="item in radioButtons"  class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" :for="item.val">{{item.txt}}</label></button>
                         <input :id="item.val" type="radio" :value="item.val" v-model="type"/>
                     </div>
-                </div>
-                <!-- <div class="add-note-radios flex align-center space-around wrap">
+                </div> -->
+                <div class="add-note-radios flex align-center space-around wrap">
                     <div class="flex">
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="textRadio">&tcaron;</label></button>
                         <input id="textRadio" type="radio" value="textNote" v-model="type"/>
@@ -45,7 +45,7 @@ export default {
                         <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="mapRadio">&#9906;</label></button>
                         <input id="mapRadio" type="radio" value="mapNote" v-model="type"/>
                     </div>
-                </div> -->
+                </div>
             </section>
 
             <section  v-if="note" :style="note.style" class="note-edit-modal flex align-center justify-center">
@@ -72,8 +72,8 @@ export default {
                                 <h5>{{key}}</h5>
                                 <div class="color-palate flex space-between margin-bottom-5px">
                                     <div v-for="(color, idx) in colors" class="flex margin-bottom-5px">
-                                        <label class="palate-color" :class="{'selected-color': color === note.style[key]}" :for="colorPalate[key]+idx" :style="{'background-color': color}"></label>
-                                        <input type="radio" :id="colorPalate[key]+idx" :value="color" v-model="note.style[key]"/>
+                                        <label class="palate-color" :class="{'selected-color': color === note.style[key]}" :for="key+idx" :style="{'background-color': color}"></label>
+                                        <input type="radio" :id="key+idx" :value="color" v-model="note.style[key]"/>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +139,6 @@ export default {
         saveNote() {
             notesService.saveNote(this.note)
                 .then(() => {
-                    console.log('note was saved successfullyS');
                     this.$emit('noteChanged');
                     this.onClose();
                 })
@@ -164,7 +163,6 @@ export default {
                     for (let key in this.colorPalate) {
                         this.colorPalate[key] = [...this.colorPalate[key]];
                     }
-                    console.log(this.colorPalate);
                 });
         },
         onToggleEditPalate(isReLoadColors) {

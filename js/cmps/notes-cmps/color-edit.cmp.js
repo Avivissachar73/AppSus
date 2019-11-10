@@ -2,8 +2,6 @@
 
 import notesService from '../../services/miss-keep-services/notes-service.js';
 
-console.log('note edit was loded successfully');
-
 export default {
     name: 'color-palate-edit',
     template: `
@@ -36,7 +34,6 @@ export default {
             notesService.getColorPalate()
             .then(colorPalate => {
                 this.colorPalate ={...colorPalate};
-                console.log(this.colorPalate);
             });
         },
         onSetCurrColorIdx(idx) {
@@ -45,8 +42,6 @@ export default {
         onSaveColorPalate() {
             notesService.saveColorPalate(this.colorPalate)
                 .then(() => {
-                    console.log('color palate was saved')
-                    // this.isEditColorPalate = false;
                     this.$emit('saveColorPalate')
                 })
         }

@@ -464,17 +464,11 @@ var someBooks = [
   ];
 var gBooks;
 getBooks().then(someBooks => gBooks = someBooks);
-// var gBooks = someBooks;
-
-// getGoogleBooks().then(books => console.log(books));
 
 function addApiBook(id) {
   var book = gApiBooks.find(book => book.id === id);
   gBooks.unshift(book);
-  // console.log('book added successfully', book)
-  return saveBooksToStorage();  
-
-  // return book;
+  return saveBooksToStorage(); 
 }
 
 function saveBooksToStorage() {
@@ -498,7 +492,6 @@ function getGoogleBooks(searchStr) {
                   acc.push(book.volumeInfo);
                   return acc;
                 }, [])
-            console.log(gApiBooks);
             return gApiBooks;
         });
 }
@@ -557,7 +550,6 @@ function getBooks() {
         resolve(books)
       })
       .catch(err => {
-        // console.log(someBooks)
         resolve(someBooks);
       })
     })
