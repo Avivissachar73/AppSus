@@ -9,7 +9,9 @@ export default {
         <section class="flex column align-center justify-center">
             <h2 style="text-align:center;">MAPS ARE SHEET</h2>
             <!-- <div hidden id="googleMap" :ref="'googleMap'+note.id" style="height: 200px; width: 100%;"></div> -->
-            <iframe :src="'http://maps.google.com/maps?q='+note.pos.lat+','+note.pos.lng+'&z=15output=embed'" style="height: 200px; width: 100%;"/>
+           
+            <!-- <iframe :src="'http://maps.google.com/maps?q='+note.searchStr+'&z=15output=embed'" style="height: 200px; width: 100%;"/> -->
+            <!-- <iframe :src="'http://maps.google.com/maps?q='+note.pos.lat+','+note.pos.lng+'&z=15output=embed'" style="height: 200px; width: 100%;"/> -->
         </section>
     `,
     data() {
