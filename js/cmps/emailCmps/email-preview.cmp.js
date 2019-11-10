@@ -33,7 +33,7 @@ export default {
                 <div class="sub-title-perview" v-if="selected">
                 <button @click="onDeleteMail"><i class="fas fa-trash-alt"></i></button>
                 <button @click="makeNote"><i class="far fa-clipboard"></i></button>
-                <router-link :to="'/misterEmail/details'+mail.id"> <i class="fas fa-book-open"></i></router-link>
+                <router-link :to="'/misterEmail/details'+mail.id"><button @click="read"> <i class="fas fa-book-open"></i> </button></router-link>
                 <email-short-text :txtLimit="130" :txt="mail.subtitle"></email-short-text>
                
                     
@@ -49,13 +49,16 @@ export default {
         }
     },
     methods:{
+        read(){
+            eventBus.$emit('read',this.mail.id)
+            
+        },
         onDeleteMail(){
             eventBus.$emit('Confirm','are you sure you to delete?',this.deleteMail)
         },
         selectedPreview(){
             this.selected=!this.selected
             // this.mail.isread=true
-            eventBus.$emit('read',this.mail.id)
         },
         deleteMail(){
 
