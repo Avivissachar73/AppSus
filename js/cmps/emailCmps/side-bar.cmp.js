@@ -19,8 +19,8 @@ export default {
             <li :class="{ showing: this.isShowingUnread}" @click="showUnRead"><router-link to="/misterEmail/list">unread({{unReadCount}})</router-link></li>
         </ul>
                 <div class="bar">
-                    
-                <div class="precent" :style="{width:unreadPrecent+'%'}"> {{unreadPrecent}}% unread emails</div>
+                    <div class="bar-msg">{{unreadPrecent}}% unread emails</div>
+                <div class="precent" :style="{width:unreadPrecent+'%'}"> </div>
                 </div>
     </section>
     `, 

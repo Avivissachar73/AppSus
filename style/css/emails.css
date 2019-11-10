@@ -1,6 +1,6 @@
 .email-preview{
     /* height: 50px; */
-    background-color: rgba(223, 230, 213, 0.637);
+    background-color: rgba(251, 252, 246, 0.849);
     border-bottom: rgba(92, 92, 92, 0.842) 1px solid;
     padding: 15px;
 }
@@ -14,14 +14,14 @@
 }
 .email-side-bar{
     width: 200px;
-    padding: 20px;
+    padding: 18px;
     background: rgba(238, 207, 161, 0.26);
 }
 .email-side-bar li {
-    padding: 20px;
+    padding: 18px;
 }
 .email-side-bar li :hover{
-    background-color: rgba(250, 151, 3, 0.5);
+    background-color: rgba(241, 181, 90, 0.678);
     transition: 0.3s;
     border-radius: 15%;
 }
@@ -38,7 +38,7 @@
 }
 .unReadMail{
     font-weight: 780;
-    background-color: rgba(240, 255, 224, 0.753);
+    background-color: rgba(212, 212, 212, 0.719);
 }
 .compose{
     display: flex;
@@ -54,10 +54,14 @@
     color: rgb(99, 96, 96);
 }
 .bar{
+    height: 20px;
     background-color:rgb(245, 245, 245);
+    position: relative;
 }
 .precent{
-    background-color: rgb(187, 121, 104);
+    height: 100%;
+    background-color: rgb(224, 78, 42);
+    border-radius: 13%;
 }.search-bar{
     border-bottom: 1px rgb(131, 130, 130) solid;
     display: flex;
@@ -103,8 +107,14 @@ a{
     font-size: 30px;
     color: rgb(204, 204, 0);
 }
-.msg-bar{
+.bar-msg{
     position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    font-size: 0.80rem;
+
     
 }
 

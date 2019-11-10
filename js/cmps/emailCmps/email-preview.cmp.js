@@ -31,9 +31,9 @@ export default {
                </div>
            </div>
                 <div class="sub-title-perview" v-if="selected">
-                <button @click="onDeleteMail">🗑️</button>
-                <button @click="makeNote">n</button>
-                <router-link :to="'/misterEmail/details'+mail.id"> 📖</router-link>
+                <button @click="onDeleteMail"><i class="fas fa-trash-alt"></i></button>
+                <button @click="makeNote"><i class="far fa-clipboard"></i></button>
+                <router-link :to="'/misterEmail/details'+mail.id"> <i class="fas fa-book-open"></i></router-link>
                 <email-short-text :txtLimit="130" :txt="mail.subtitle"></email-short-text>
                
                     

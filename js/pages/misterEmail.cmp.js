@@ -57,7 +57,10 @@ export default {
         })
         
         eventBus.$on('sendingNewMail',(newMail)=>{
-            if(newMail.to===''||newMail.subtitle===''){return}
+            if(newMail.to===''||newMail.subtitle===''){
+               eventBus.$emit('Alert','Missing input')
+                return
+            }
             mailsService.addMail(newMail)
         })
         eventBus.$on('showTrash',()=>{

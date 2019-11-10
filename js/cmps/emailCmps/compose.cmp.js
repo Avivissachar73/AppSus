@@ -38,7 +38,7 @@ export default {
     },
     created(){
         eventBus.$on('replyToCompose',(replyMail)=>{
-           this.newMail.title=replyMail.title+' Re :',
+           this.newMail.title='subject : '+replyMail.title+' Re :',
            this.newMail.subtitle='\n\n\n\n'+'- - - - -- - -- ---- -- ------- --- -'+'\n\n\n'+replyMail.subtitle
         })
     },
