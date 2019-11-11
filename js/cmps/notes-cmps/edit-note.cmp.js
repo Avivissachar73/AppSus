@@ -14,36 +14,10 @@ export default {
     template: `
         <section>
             <section class="add-note-container">
-                <!-- <div class="add-note-radios flex align-center space-around wrap">
-                    <div v-for="item in radioButtons"  class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" :for="item.val">{{item.txt}}</label></button>
-                        <input :id="item.val" type="radio" :value="item.val" v-model="type"/>
-                    </div>
-                </div> -->
                 <div class="add-note-radios flex align-center space-around wrap">
-                    <div class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="textRadio">&tcaron;</label></button>
-                        <input id="textRadio" type="radio" value="textNote" v-model="type"/>
-                    </div>
-                    <div class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="imageRadio">&#10064;</label></button>
-                        <input id="imageRadio" type="radio" value="imageNote" v-model="type"/>
-                    </div>
-                    <div class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="videoRadio">▷</label></button>
-                        <input id="videoRadio" type="radio" value="videoNote" v-model="type"/>
-                    </div>
-                    <div class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="audioRadio">&#9833;</label></button>
-                        <input id="audioRadio" type="radio" value="audioNote" v-model="type"/>
-                    </div>
-                    <div class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="todoRadio">&#9776;</label></button>
-                        <input id="todoRadio" type="radio" value="todoNote" v-model="type"/>
-                    </div>
-                    <div class="flex">
-                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" for="mapRadio">&#9906;</label></button>
-                        <input id="mapRadio" type="radio" value="mapNote" v-model="type"/>
+                    <div v-for="item in radioButtons"  class="flex">
+                        <button class="flex align-center justify-center"><label class="flex align-center justify-center" :for="item.val"><span v-html="item.txt"></span></label></button>
+                        <input :id="item.val" type="radio" :value="item.val" v-model="type"/>
                     </div>
                 </div>
             </section>
@@ -83,8 +57,8 @@ export default {
                         <note-palate-edit v-if="isEditColorPalate" @saveColorPalate="onToggleEditPalate(true)" @closeColorPalate="onToggleEditPalate"></note-palate-edit>
                     </div>
                     <div class="flex align-center space around wrap width-all">
-                        font:
-                        <select v-model="note.style['font-family']" placeholder="font">
+                        <label for="fontFamily">font:</label>
+                        <select id="fontFamily" v-model="note.style['font-family']" placeholder="font">
                             <option :value="'Arial'" label="Arial"/>
                             <option :value="'Nanum Gothic'" label="Nanum Gothic"/>
                             <option :value="'sans-serif'" label="sans-serif"/>
@@ -95,8 +69,8 @@ export default {
                             <option :value="'Nanum Gothic'" label="Nanum Gothic"/>
                             <option :value="'sans-serif'" label="sans-serif"/>
                         </datalist> -->
-                        style:
-                        <select v-model="note.style['font-style']" placeholder="style">
+                        <label for="fontStyle">style:</label>
+                        <select id="fontStyle" v-model="note.style['font-style']" placeholder="style">
                             <option :value="'italic'" label="italic"/>
                             <option :value="'normal'" label="normal"/>
                         </select>
@@ -112,8 +86,8 @@ export default {
             noteId: '',
             isEditColorPalate: false,
             colorPalate: null,
-            // radioButtons: [{val: 'textNote', txt: '&tcaron;'},{val: 'imageNote', txt: '&#10064;'},{val: 'videoNote', txt: '▷'},{val: 'audioNote', txt: '&#9833;'},{val: 'todoNote', txt: '&#9776;'},{val: 'mapNote', txt: '&#9906;'}]
-            radioButtons: [{val: 'textNote', txt: 'T'},{val: 'imageNote', txt: 'I'},{val: 'videoNote', txt: '▷'},{val: 'audioNote', txt: 'A'},{val: 'todoNote', txt: 'D'},{val: 'mapNote', txt: 'M'}]
+            radioButtons: [{val: 'textNote', txt: '&tcaron;'},{val: 'imageNote', txt: '&#10064;'},{val: 'videoNote', txt: '▷'},{val: 'audioNote', txt: '&#9833;'},{val: 'todoNote', txt: '&#9776;'},{val: 'mapNote', txt: '&#9906;'}]
+            // radioButtons: [{val: 'textNote', txt: 'T'},{val: 'imageNote', txt: 'I'},{val: 'videoNote', txt: '▷'},{val: 'audioNote', txt: 'A'},{val: 'todoNote', txt: 'D'},{val: 'mapNote', txt: 'M'}]
 
         }
     },
